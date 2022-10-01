@@ -28,4 +28,9 @@ public class Minigame : MonoBehaviour
     {
         m_alien = alien;
     }
+
+    public virtual void AlienLeave()
+    {
+        
+    }
 }

@@ -58,6 +58,9 @@ public class Game : MonoBehaviour
             //Alien leaves (fail if still active)
             m_alien.gameObject.SetActive(false);
             
+            foreach(var minigame in m_minigames)
+                minigame.AlienLeave();
+            
             yield return new WaitForSeconds(2);
         }
 
