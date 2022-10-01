@@ -35,7 +35,7 @@ public class MinigameProp : MonoBehaviour
     public void DropOnscreen()
     {        
         Canvas canvas = GetComponentInParent<Canvas>();
-        transform.position += Vector3.up * canvas.pixelRect.height;
+        transform.position += Vector3.up * canvas.pixelRect.height * Random.Range(1, 1.5f);
         m_falling = true;
         m_velocity = Vector3.zero;
     }
