@@ -6,6 +6,8 @@ public class AlienData
 {
     private AlienVisuals _visuals;
     
+    public AlienVisuals Visuals { get { return _visuals; } }
+
     public AlienData(AlienVisuals visuals)
     {
         _visuals = visuals;

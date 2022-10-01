@@ -6,13 +6,26 @@ public class AlienManager : MonoBehaviour
 {
     [SerializeField] private AlienVisualsData visualsData;
     [SerializeField] private int numberAliens = 10;
-    // todo stats
+    
+    private List<OngoingAlienData> alienData = new List<OngoingAlienData>();
 
-    private List<OngoingAlienData> alienData;
+    public int NumAliens { get { return numberAliens; } }
 
     public OngoingAlienData GetNextAlien(int round)
     {
         return alienData.RandomElement<OngoingAlienData>(match: x=>x.NumDates < round);
+    }
+
+    public void ResetAliens()
+    {
+        alienData.Clear();
+        GenerateAliens();
+    }
+
+    private void Start()
+    {
+        if (alienData.Count == 0)
+            GenerateAliens();
     }
 
     private void GenerateAliens()
@@ -34,6 +47,7 @@ public class OngoingAlienData
     private float _attraction;
     private int _numDates;
 
+    public AlienData Data { get { return _alienData; } }
     public int NumDates { get { return _numDates; } }
 
     public OngoingAlienData(AlienData data)

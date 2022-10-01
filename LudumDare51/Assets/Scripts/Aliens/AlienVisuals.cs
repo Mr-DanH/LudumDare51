@@ -20,20 +20,20 @@ public class AlienVisuals
     [System.Serializable]
     public class PositionalVisualElement : VisualElement
     {
-        public Texture Element;
+        public Sprite Element;
         public List<int> PositionIndex;
     }
 
     [System.Serializable]
     public class HeadData : VisualElement
     {
-        public GameObject Head;       
+        public AlienHead Head;       
     }
 
     [System.Serializable]
     public class BodyData : VisualElement
     {
-        public GameObject Body;
+        public AlienTorso Body;
     }
 
     [System.Serializable]

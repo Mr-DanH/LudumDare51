@@ -11,7 +11,7 @@ public class TablePropMinigame : Minigame
         base.ResetMinigame();
     }
     
-    public override void AlienArrived(Game.Alien alien)
+    public override void AlienArrived(Alien alien)
     {
         base.AlienArrived(alien);
 
