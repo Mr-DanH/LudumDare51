@@ -29,8 +29,10 @@ MonoBehaviour:
   - Description: 
     Visual: {fileID: 21300000, guid: 21e6470f41462b04a9ac30bc7503827f, type: 3}
   HeadAccessoryPositions:
-  - PositionIndex: 0100000003000000
-  - PositionIndex: 020000000400000006000000
+  - PositionIndex: 00000000010000000200000003000000
+  - PositionIndex: 0000000003000000
+  - PositionIndex: 0100000002000000
+  - PositionIndex: 02000000
   Bodies:
   - Description: 
     Body: {fileID: 4114198452282757636, guid: 0b7f9774659151142b77a821c93756ef, type: 3}
@@ -44,9 +46,10 @@ MonoBehaviour:
   - Description: 
     Visual: {fileID: 21300000, guid: 4cb290e6591e83245aa4667f650dbec3, type: 3}
   ArmPositions:
-  - PositionIndex: 010000000300000004000000
-  - PositionIndex: 0100000002000000
-  - PositionIndex: 010000000200000003000000040000000500000006000000
+  - PositionIndex: 0000000001000000
+  - PositionIndex: 0200000003000000
+  - PositionIndex: 00000000010000000200000003000000
+  - PositionIndex: 000000000100000002000000030000000400000005000000
   Eyes:
   - Description: 
     Visual: {fileID: 21300000, guid: 8adc427c80c02704198b9ed3fcfc6941, type: 3}
@@ -57,8 +60,14 @@ MonoBehaviour:
   - Description: 
     Visual: {fileID: 21300000, guid: d329921e29cf1b64ab922d93824f4570, type: 3}
   EyePositions:
-  - PositionIndex: 010000000200000003000000040000000500000006000000
-  - PositionIndex: 0100000004000000
+  - PositionIndex: 00000000010000000200000003000000040000000500000006000000
+  - PositionIndex: 00000000
+  - PositionIndex: 0100000002000000
+  - PositionIndex: 0300000004000000
+  - PositionIndex: 0500000006000000
+  - PositionIndex: 000000000100000002000000
+  - PositionIndex: 01000000020000000300000004000000
+  - PositionIndex: 000000000500000006000000
   Patterns:
   - Description: 
     Pattern: {fileID: 2800000, guid: ea4f36f8d729b884ea43ff3de9b04c24, type: 3}

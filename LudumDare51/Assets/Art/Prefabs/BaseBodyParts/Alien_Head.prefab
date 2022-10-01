@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6389680473887661520}
   m_Layer: 5
-  m_Name: Eye_Transform
+  m_Name: Eye_Transform_Secondary
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3392508195924557410}
   m_Layer: 5
-  m_Name: Eye_Transform
+  m_Name: Eye_Transform_Primary
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2956517989933663249}
   m_Layer: 5
-  m_Name: Eye_Transform
+  m_Name: Eye_Transform_Threery
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -304,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3828338067365693977}
   m_Layer: 5
-  m_Name: Eye_Transform
+  m_Name: Eye_Transform_Secondary
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -376,7 +376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5065839956089671819}
   m_Layer: 5
-  m_Name: Eye_Transform
+  m_Name: Eye_Transform_Threery
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -412,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 723248788228958746}
   m_Layer: 5
-  m_Name: Eye_Transform
+  m_Name: Eye_Transform_Foury
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -628,7 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8336599390666715729}
   m_Layer: 5
-  m_Name: Eye_Transform
+  m_Name: Eye_Transform_Foury
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
