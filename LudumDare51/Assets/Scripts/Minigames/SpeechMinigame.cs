@@ -12,7 +12,7 @@ public class SpeechMinigame : Minigame
     public CanvasGroup m_leftPlayerSpeech;
     public CanvasGroup m_rightPlayerSpeech;
 
-    float m_time;
+    float m_time = float.MaxValue;
     
     public enum eState
     {
@@ -27,6 +27,8 @@ public class SpeechMinigame : Minigame
 
     public override void ResetMinigame()
     {
+        base.ResetMinigame();
+
         m_leftAlienSpeech.SetActive(false);
         m_rightAlienSpeech.SetActive(false);
         m_leftPlayerSpeech.gameObject.SetActive(false);
@@ -43,7 +45,9 @@ public class SpeechMinigame : Minigame
     }
 
     public override void AlienLeave()
-    {        
+    {     
+        base.AlienLeave();
+
         m_leftAlienSpeech.SetActive(false);
         m_rightAlienSpeech.SetActive(false);
         m_leftPlayerSpeech.gameObject.SetActive(false);
@@ -54,12 +58,24 @@ public class SpeechMinigame : Minigame
 
     void Update()
     {
-        if(m_state == eState.Waiting && Time.time > m_time)
+        if(Time.time > m_time)
         {
-            m_state = (Random.value > 0.5f) ? eState.Left : eState.Right;
+            if(m_state == eState.Waiting)
+            {
+                m_time = float.MaxValue;
+                m_state = (Random.value > 0.5f) ? eState.Left : eState.Right;
 
-            m_leftAlienSpeech.SetActive(m_state == eState.Left);
-            m_rightAlienSpeech.SetActive(m_state == eState.Right);
+                m_leftAlienSpeech.SetActive(m_state == eState.Left);
+                m_rightAlienSpeech.SetActive(m_state == eState.Right);
+            }
+            else
+            {
+                m_leftAlienSpeech.SetActive(false);
+                m_rightAlienSpeech.SetActive(false);
+                m_leftPlayerSpeech.gameObject.SetActive(false);
+                m_rightPlayerSpeech.gameObject.SetActive(false);
+            }
+
         }
     }
 
@@ -100,5 +116,7 @@ public class SpeechMinigame : Minigame
     {
         m_leftPlayerSpeech.alpha = (m_dragState == eState.Left) ? 1 : 0;
         m_rightPlayerSpeech.alpha = (m_dragState == eState.Right) ? 1 : 0;
+
+        m_time = Time.time + 1;
     }
 }
