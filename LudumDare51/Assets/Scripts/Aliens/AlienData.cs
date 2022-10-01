@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlienData : MonoBehaviour
+public class AlienData 
 {
-    // Start is called before the first frame update
-    void Start()
+    private AlienVisuals _visuals;
+    
+    public AlienData(AlienVisuals visuals)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _visuals = visuals;
     }
 }
