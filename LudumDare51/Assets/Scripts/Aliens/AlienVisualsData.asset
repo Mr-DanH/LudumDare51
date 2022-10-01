@@ -61,3 +61,10 @@ MonoBehaviour:
     Pattern: {r: 0.754717, g: 0.670737, b: 0, a: 1}
   - Skin: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
     Pattern: {r: 0.8633566, g: 0, b: 1, a: 1}
+  Mouths:
+  - Description: 
+    Mouth: {fileID: 21300000, guid: a48f517dd7878bd4a89364c297230cbc, type: 3}
+  - Description: 
+    Mouth: {fileID: 21300000, guid: cd10c8efb35aae244925bee57f2fdbd5, type: 3}
+  - Description: 
+    Mouth: {fileID: 21300000, guid: fa7a4ef2c8434fd4daa6c1baeb58e5c1, type: 3}

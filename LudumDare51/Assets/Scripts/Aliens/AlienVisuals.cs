@@ -10,6 +10,7 @@ public class AlienVisuals
     public PositionalVisualElement Eyes;
     public PositionalVisualElement Arms;
     public ColouringData Colouring;
+    public MouthData Mouths;
 }
 
     #region Data Classes
@@ -42,6 +43,12 @@ public class AlienVisuals
         public Texture Pattern;
         public Color PatternColour;
         public Color SkinColour;
+    }
+
+    [System.Serializable]
+    public class MouthData : VisualElement
+    {
+        public Sprite Mouth;
     }
 
     #endregion

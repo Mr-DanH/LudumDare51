@@ -15,6 +15,7 @@ public class AlienVisualsData : ScriptableObject
     [SerializeField] private List<PositionsSetupData> EyePositions;
     [SerializeField] private List<PatternSetupData> Patterns;
     [SerializeField] private List<ColourPaletteSetupData> Colourings;
+    [SerializeField] private List<MouthData> Mouths;
 
     public List<AlienVisuals> GenerateAlienVisuals(int num)
     {
@@ -39,6 +40,7 @@ public class AlienVisualsData : ScriptableObject
         visuals.Eyes = GeneratePositionalVisualElement(Eyes, EyePositions);
         visuals.Arms = GeneratePositionalVisualElement(Arms, ArmPositions);
         visuals.Colouring = GenerateColouringData();
+        visuals.Mouths = Mouths.RandomElement<MouthData>();
 
         return visuals;
     }
