@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5075814078499781766, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
       propertyPath: m_Name
-      value: Alien_Body
+      value: Alien_Body_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518362026510265027, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 238.7
       objectReference: {fileID: 0}
     - target: {fileID: 9066291564981837809, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
       propertyPath: m_Pivot.x
