@@ -807,6 +807,7 @@ GameObject:
   - component: {fileID: 454427678}
   - component: {fileID: 454427677}
   - component: {fileID: 454427676}
+  - component: {fileID: 454427679}
   m_Layer: 0
   m_Name: Image (4)
   m_TagString: Untagged
@@ -884,6 +885,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454427674}
   m_CullTransparentMesh: 1
+--- !u!114 &454427679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454427674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df22c7f53219752459381d8b36f035ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &509016658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1315,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_objects:
   - {fileID: 1700856020}
+  m_props:
+  - {fileID: 1700856022}
   m_fly: {fileID: 1700856021}
   m_horizontalSpeed: 100
   m_vertSpeed: 50
@@ -1788,6 +1803,9 @@ MonoBehaviour:
   m_objects:
   - {fileID: 1727783171}
   - {fileID: 454427674}
+  m_props:
+  - {fileID: 1727783175}
+  - {fileID: 454427679}
   m_actualDrink: {fileID: 454427676}
 --- !u!1 &893243682
 GameObject:
@@ -2202,6 +2220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_objects: []
+  m_props: []
   m_leftAlienSpeech: {fileID: 843286196}
   m_rightAlienSpeech: {fileID: 1966777600}
   m_leftPlayerSpeech: {fileID: 2004428218}
@@ -2854,6 +2873,9 @@ MonoBehaviour:
   m_objects:
   - {fileID: 759989527}
   - {fileID: 1110864917}
+  m_props:
+  - {fileID: 759989531}
+  - {fileID: 1110864919}
 --- !u!4 &1276791837
 Transform:
   m_ObjectHideFlags: 0
@@ -3152,6 +3174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_objects:
   - {fileID: 326623717}
+  m_props:
+  - {fileID: 326623719}
   m_targetObject: {fileID: 326623717}
 --- !u!1 &1416197239
 GameObject:
