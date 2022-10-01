@@ -39,6 +39,12 @@ public class AlienManager : MonoBehaviour
             alienData.Add(new OngoingAlienData(newData));
         }
     }
+
+    public void ForEachAlien(System.Action<OngoingAlienData> callback)
+    {
+        foreach(var alien in alienData)
+            callback(alien);
+    }
 }
 
 public class OngoingAlienData
@@ -49,6 +55,7 @@ public class OngoingAlienData
 
     public AlienData Data { get { return _alienData; } }
     public int NumDates { get { return _numDates; } }
+    public bool PlayerRequestedMatch { get; set; }
 
     public OngoingAlienData(AlienData data)
     {

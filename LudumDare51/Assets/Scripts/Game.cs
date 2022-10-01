@@ -56,16 +56,6 @@ public class Game : MonoBehaviour
             yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
         }
 
-        //Game end
-    }
-
-    void SuccessDate()
-    {
-
-    }
-
-    void FailDate()
-    {
-
+        ChooseMatchesScreen.Instance.Show();
     }
 }
