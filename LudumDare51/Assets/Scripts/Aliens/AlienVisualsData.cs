@@ -13,7 +13,9 @@ public class AlienVisualsData : ScriptableObject
     [SerializeField] private List<PositionsSetupData> ArmPositions;
     [SerializeField] private List<TextureSetupData> Eyes;
     [SerializeField] private List<PositionsSetupData> EyePositions;
-    [SerializeField] private List<ColouringData> Colourings;
+    [SerializeField] private List<PatternSetupData> Patterns;
+    [SerializeField] private List<ColourPaletteSetupData> Colourings;
+    [SerializeField] private List<MouthData> Mouths;
 
     public List<AlienVisuals> GenerateAlienVisuals(int num)
     {
@@ -37,7 +39,8 @@ public class AlienVisualsData : ScriptableObject
         visuals.Body = Bodies.RandomElement<BodyData>();
         visuals.Eyes = GeneratePositionalVisualElement(Eyes, EyePositions);
         visuals.Arms = GeneratePositionalVisualElement(Arms, ArmPositions);
-        visuals.Colouring = Colourings.RandomElement<ColouringData>();
+        visuals.Colouring = GenerateColouringData();
+        visuals.Mouths = Mouths.RandomElement<MouthData>();
 
         return visuals;
     }
@@ -53,6 +56,20 @@ public class AlienVisualsData : ScriptableObject
         };
         return newElement;
     }
+
+    private ColouringData GenerateColouringData()
+    {
+        PatternSetupData patternData = Patterns.RandomElement<PatternSetupData>();
+        ColourPaletteSetupData colourPaletteData = Colourings.RandomElement<ColourPaletteSetupData>();
+        ColouringData newData = new ColouringData()
+        {
+            Pattern = patternData.Pattern,
+            Description = patternData.Description,
+            PatternColour = colourPaletteData.Pattern,
+            SkinColour = colourPaletteData.Skin
+        };
+        return newData;
+    }
 }
 
     [System.Serializable]
@@ -65,4 +82,17 @@ public class AlienVisualsData : ScriptableObject
     public class PositionsSetupData
     {
         public List<int> PositionIndex;
+    }
+
+    [System.Serializable]
+    public class ColourPaletteSetupData
+    {
+        public Color Skin;
+        public Color Pattern;
+    }
+
+    [System.Serializable]
+    public class PatternSetupData : VisualElement
+    {
+        public Texture Pattern;
     }

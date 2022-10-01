@@ -49,28 +49,22 @@ MonoBehaviour:
   EyePositions:
   - PositionIndex: 010000000200000003000000040000000500000006000000
   - PositionIndex: 0100000004000000
-  Colourings:
+  Patterns:
   - Description: 
     Pattern: {fileID: 2800000, guid: ea4f36f8d729b884ea43ff3de9b04c24, type: 3}
-    Colours:
-    - {r: 0.09411765, g: 0.7529412, b: 0.8, a: 1}
-    - {r: 0.19215687, g: 0.50980395, b: 0.5764706, a: 1}
-    - {r: 0.495283, g: 1, b: 0.7424811, a: 1}
   - Description: 
     Pattern: {fileID: 2800000, guid: 3b1b75c587412d94f8457949d7a6d1a6, type: 3}
-    Colours:
-    - {r: 0.9716981, g: 0.48126557, b: 0.71152276, a: 1}
-    - {r: 1, g: 0.9614114, b: 0.504717, a: 1}
-    - {r: 0.6132076, g: 0.38687852, b: 0.34420612, a: 1}
   - Description: 
     Pattern: {fileID: 2800000, guid: b4119bd8949b0fa46aa5f29abc8709c2, type: 3}
-    Colours:
-    - {r: 0.47213942, g: 0.8962264, b: 0.32551616, a: 1}
-    - {r: 0.19037023, g: 0.5849056, b: 0.48293784, a: 1}
-    - {r: 1, g: 0.9112306, b: 0.4481132, a: 1}
+  Colourings:
+  - Skin: {r: 0, g: 0.15157586, b: 0.764151, a: 1}
+    Pattern: {r: 0.754717, g: 0.670737, b: 0, a: 1}
+  - Skin: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
+    Pattern: {r: 0.8633566, g: 0, b: 1, a: 1}
+  Mouths:
   - Description: 
-    Pattern: {fileID: 2800000, guid: 3b1b75c587412d94f8457949d7a6d1a6, type: 3}
-    Colours:
-    - {r: 0.6037736, g: 0.16679531, b: 0.16233535, a: 1}
-    - {r: 0.16981131, g: 0.13376646, b: 0.1414366, a: 1}
-    - {r: 1, g: 0.8915094, b: 0.9209805, a: 1}
+    Mouth: {fileID: 21300000, guid: a48f517dd7878bd4a89364c297230cbc, type: 3}
+  - Description: 
+    Mouth: {fileID: 21300000, guid: cd10c8efb35aae244925bee57f2fdbd5, type: 3}
+  - Description: 
+    Mouth: {fileID: 21300000, guid: fa7a4ef2c8434fd4daa6c1baeb58e5c1, type: 3}

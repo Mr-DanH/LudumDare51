@@ -7,6 +7,7 @@ public class AlienHead : AlienBodyPart
 {
     [SerializeField] List<Image> _eyes;
     [SerializeField] List<Image> _accessories;
+    [SerializeField] Image _mouth;
 
     public override void Setup(AlienVisuals data)
     {
@@ -17,5 +18,7 @@ public class AlienHead : AlienBodyPart
         List<int> accessoryPositionIndices = data.HeadAccessory.PositionIndex;
         Sprite accessory = data.HeadAccessory.Element;
         SetPositionalImages(accessoryPositionIndices, _accessories, accessory);
+
+        _mouth.sprite = data.Mouths.Mouth;
     }
 }
