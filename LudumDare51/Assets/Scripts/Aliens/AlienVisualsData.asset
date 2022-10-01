@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd6201f2dc500e4390c67ecbc3763d8, type: 3}
+  m_Name: AlienVisualsData
+  m_EditorClassIdentifier: 
+  Heads:
+  - Description: 
+    Head: {fileID: 3088050421286021109, guid: b81fbb7c3d6756441b3d0e2b63b0cb51, type: 3}
+  - Description: 
+    Head: {fileID: 3088050421286021109, guid: a7d4ae2eb6d4bda469b3d9c43af447e7, type: 3}
+  HeadAccessories:
+  - Description: 
+    Visual: {fileID: 2800000, guid: 3209a3d54b42570419e29ef10d917bf1, type: 3}
+  - Description: 
+    Visual: {fileID: 2800000, guid: 8a00a3ac0b801424ba3451cce55b2c51, type: 3}
+  HeadAccessoryPositions:
+  - PositionIndex: 0100000003000000
+  - PositionIndex: 020000000400000006000000
+  Bodies:
+  - Description: 
+    Body: {fileID: 7369682874283005348, guid: 0b7f9774659151142b77a821c93756ef, type: 3}
+  - Description: 
+    Body: {fileID: 7369682874283005348, guid: c2f4bcd2c5970c84daa3e5d14cd9e8fe, type: 3}
+  Arms:
+  - Description: 
+    Visual: {fileID: 2800000, guid: 3eb61c8d3899c094ea1215fa38e4518a, type: 3}
+  - Description: 
+    Visual: {fileID: 2800000, guid: 62dcca4b5415c024bb04c95deab7d7e8, type: 3}
+  ArmPositions:
+  - PositionIndex: 010000000300000004000000
+  - PositionIndex: 0100000002000000
+  - PositionIndex: 010000000200000003000000040000000500000006000000
+  Eyes:
+  - Description: 
+    Visual: {fileID: 2800000, guid: 8adc427c80c02704198b9ed3fcfc6941, type: 3}
+  - Description: 
+    Visual: {fileID: 2800000, guid: cef597b3dbeeaeb458bad1273b5807af, type: 3}
+  EyePositions:
+  - PositionIndex: 010000000200000003000000040000000500000006000000
+  - PositionIndex: 0100000004000000
+  Colourings:
+  - Description: 
+    Pattern: {fileID: 2800000, guid: ea4f36f8d729b884ea43ff3de9b04c24, type: 3}
+    Colours:
+    - {r: 0.8018868, g: 0.09380559, b: 0.09380559, a: 1}
+    - {r: 0.09411764, g: 0.8, b: 0.11927647, a: 1}
+    - {r: 0.09411764, g: 0.23413578, b: 0.8, a: 1}
+  - Description: 
+    Pattern: {fileID: 2800000, guid: 3b1b75c587412d94f8457949d7a6d1a6, type: 3}
+    Colours:
+    - {r: 0.8, g: 0.42363736, b: 0.09411764, a: 1}
+    - {r: 0.5815253, g: 0.8, b: 0.09411764, a: 1}
+    - {r: 0.45817676, g: 0.09411764, b: 0.8, a: 1}
