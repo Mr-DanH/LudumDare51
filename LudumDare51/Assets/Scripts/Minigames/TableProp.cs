@@ -3,15 +3,17 @@ using UnityEngine.EventSystems;
 
 public class TableProp : MinigameProp, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    Vector3 m_velocity;
-    int m_dragFrame;
-    bool m_dragging;
-    bool m_thrown;
+    public TablePropMinigame m_minigame;
+    public eMinigameEvent m_event;
 
     public override void ResetState()
     {
+        if(gameObject.activeSelf)
+            return;
+
         base.ResetState();
-        m_thrown = false;
+
+        DropOnscreen();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -27,29 +29,17 @@ public class TableProp : MinigameProp, IPointerDownHandler, IDragHandler, IPoint
     {
         if(eventData.delta != Vector2.zero)
         {
-            m_velocity = eventData.delta / Time.deltaTime;
-            m_thrown = true;
+            Throw(eventData.delta / Time.deltaTime);
         }
         else
         {
-
+            Throw(Vector3.zero);
         }
     }
 
-    void Update()
+    
+    public override void LeavePlayArea()
     {
-        if (m_thrown)
-        {
-            transform.position += m_velocity * Time.deltaTime;
-
-            Canvas canvas = GetComponentInParent<Canvas>();
-
-            RectTransform rectTransform = (RectTransform)transform;
-            Rect rect = rectTransform.rect;            
-            rect.position += (Vector2)rectTransform.position;
-
-            if(!rect.Overlaps(canvas.pixelRect))
-                gameObject.SetActive(false);
-        }
+        m_minigame.PropEvent(m_event);
     }
 }

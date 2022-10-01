@@ -20,9 +20,15 @@ public class StrengthItem : MinigameProp, IPointerDownHandler
 
     public override void ResetState()
     {
-        base.ResetState();
         m_health = 10;
         m_offsetTime = 0;
+
+        if(gameObject.activeSelf)
+            return;
+
+        base.ResetState();
+
+        DropOnscreen();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -31,11 +37,19 @@ public class StrengthItem : MinigameProp, IPointerDownHandler
         m_offsetTime = 1;
 
         if(m_health <= 0)
+        {
             gameObject.SetActive(false);
+            m_minigame.PropEvent(eMinigameEvent.StrengthTested);
+        }
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
+
+        if(m_falling)
+            return;
+
         m_offsetTime = Mathf.MoveTowards(m_offsetTime, 0, Time.deltaTime / m_damageShakeTime);
         float angle = 2 * Mathf.PI * Random.value;
         transform.localPosition = m_startPos + (new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * m_offsetTime * m_damageShakeOffset);

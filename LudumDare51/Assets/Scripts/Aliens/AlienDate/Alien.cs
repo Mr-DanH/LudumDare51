@@ -29,4 +29,9 @@ public class Alien : MonoBehaviour
         _head = Instantiate<AlienHead>(visualData.Head.Head, _body.HeadTransform);
         _head.Setup(visualData);
     }
+
+    public void MinigameEvent(eMinigameEvent minigameEvent)
+    {
+        Debug.Log(minigameEvent);
+    }
 }
