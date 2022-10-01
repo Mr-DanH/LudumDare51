@@ -55,7 +55,7 @@ public class DrinkMenu : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
-        m_selected = eventData.pointerEnter.GetComponentInParent<Drink>();
+        m_selected = (eventData.pointerEnter != null) ? eventData.pointerEnter.GetComponentInParent<Drink>() : null;
 
         SelectDrink(m_selected);
     }
