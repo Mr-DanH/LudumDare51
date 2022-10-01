@@ -12,8 +12,9 @@ public class Alien : MonoBehaviour
     {
         AlienVisuals visualData = ongoingData.Data.Visuals;
         // set material and colour
-        _alienMaterial.mainTexture = visualData.Colouring.Pattern;
-        _alienMaterial.color = visualData.Colouring.Colours.RandomElement<Color>();
+        _alienMaterial.SetTexture("_PatternTex", visualData.Colouring.Pattern);
+        _alienMaterial.SetColor("_ColorPat", visualData.Colouring.PatternColour);
+        _alienMaterial.SetColor("_Color", visualData.Colouring.SkinColour);
 
         if (_body != null)
         {

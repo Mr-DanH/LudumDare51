@@ -40,7 +40,8 @@ public class AlienVisuals
     public class ColouringData : VisualElement
     {
         public Texture Pattern;
-        public List<Color> Colours;
+        public Color PatternColour;
+        public Color SkinColour;
     }
 
     #endregion
