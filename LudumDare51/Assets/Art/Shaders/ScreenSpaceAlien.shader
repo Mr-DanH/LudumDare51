@@ -4,8 +4,10 @@ Shader "LD51/ScreenSpaceAlien"
     {
     	_Color ("Color", Color) = (1, 1, 1, 1)
     	_ColorPat ("Pattern Color", Color) = (0, 0, 0, 1)
+    	_ColorLgt ("Light Color", Color) = (1, 1, 1, 1)
         _MainTex ("Texture", 2D) = "white" {}
-        _PatternTex ("Texture", 2D) = "white" {}
+        _PatternTex ("Pattern Texture", 2D) = "white" {}
+        _LightTex ("Light Texture", 2D) = "black" {}
     }
     SubShader
     {
@@ -41,8 +43,10 @@ Shader "LD51/ScreenSpaceAlien"
             float4 _MainTex_ST;
             sampler2D _PatternTex;
             float4 _PatternTex_ST;
+            sampler2D _LightTex;
             fixed4 _Color;
             fixed4 _ColorPat;
+            fixed4 _ColorLgt;
 
             v2f vert (appdata v)
             {
@@ -66,12 +70,22 @@ Shader "LD51/ScreenSpaceAlien"
                 float2 textureCoordinate = i.screenPosition.xy / i.screenPosition.w;
     			float aspect = _ScreenParams.x / _ScreenParams.y;
     			textureCoordinate.x = textureCoordinate.x * aspect;
+    			float2 lightCoordinate = textureCoordinate;
     			textureCoordinate = TRANSFORM_TEX(textureCoordinate, _PatternTex);
     			fixed4 colPat = tex2D(_PatternTex, textureCoordinate);
+    			fixed4 colLgtRaw = tex2D(_LightTex, lightCoordinate);
+    			fixed4 colLgt = colLgtRaw * _ColorLgt;
     			colPat *= _ColorPat;
     			fixed alpPat = colPat.a;
 
     			fixed3 colComb = lerp(colMain.rgb, colPat.rgb, alpPat);
+
+    			fixed3 colLgtRawTnt = colLgtRaw + _ColorLgt;
+    			
+    			fixed3 colCombAdd = colComb + colLgt;
+    			fixed3 colCombMul = colCombAdd * colLgtRawTnt;
+
+    			colComb = lerp(colComb, colCombMul, _ColorLgt.a);
     			fixed4 col = (1, 1, 1, 1);
     			col.rgb = colComb;
     			col.a = alpMain;
