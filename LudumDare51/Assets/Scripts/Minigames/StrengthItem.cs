@@ -31,7 +31,10 @@ public class StrengthItem : MinigameProp, IPointerDownHandler
         m_offsetTime = 1;
 
         if(m_health <= 0)
+        {
             gameObject.SetActive(false);
+            m_minigame.PropEvent(eMinigameEvent.StrengthTested);
+        }
     }
 
     void Update()

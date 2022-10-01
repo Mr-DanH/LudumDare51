@@ -1,14 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Drink : MonoBehaviour//, IDragHandler
+public class Drink : MonoBehaviour
 {
-    public void OnDrag(PointerEventData eventData)
-    {
-        GetComponentInParent<DrinkMenu>().OnDrag(eventData);
-    }
-
-    public void Highlight(bool selected)
-    {
-    }
+    public eMinigameEvent m_event;
 }

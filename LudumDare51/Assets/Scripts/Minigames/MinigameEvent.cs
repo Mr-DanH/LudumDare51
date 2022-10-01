@@ -5,5 +5,17 @@ using UnityEngine;
 public enum eMinigameEvent
 {
     CandleThrown,
-    FlowerThrown
+    FlowerThrown,
+
+    FlyKilled,
+
+    StrengthTested,
+
+    OrderDrinkA,
+    OrderDrinkB,
+    OrderDrinkC,
+    OrderDrinkD,
+
+    SpeechAgreed,
+    SpeechDisagreed
 }

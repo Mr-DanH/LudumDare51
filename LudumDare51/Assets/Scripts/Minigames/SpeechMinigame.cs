@@ -117,6 +117,15 @@ public class SpeechMinigame : Minigame
         m_leftPlayerSpeech.alpha = (m_dragState == eState.Left) ? 1 : 0;
         m_rightPlayerSpeech.alpha = (m_dragState == eState.Right) ? 1 : 0;
 
+        bool speechChosen = (m_dragState == eState.Left) || (m_dragState == eState.Right);
+        if(speechChosen)
+        {
+            if(m_dragState == m_state)
+                PropEvent(eMinigameEvent.SpeechAgreed);
+            else
+                PropEvent(eMinigameEvent.SpeechDisagreed);
+        }
+
         m_time = Time.time + 1;
     }
 }

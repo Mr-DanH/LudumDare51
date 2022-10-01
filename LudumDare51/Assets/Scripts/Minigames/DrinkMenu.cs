@@ -44,7 +44,10 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         m_targetPosition = m_startPosition;
 
         if(m_selected != null)
+        {
             m_minigame.OrderDrink(m_selected);
+            m_minigame.PropEvent(m_selected.m_event);
+        }
     }
 
     void Update()
