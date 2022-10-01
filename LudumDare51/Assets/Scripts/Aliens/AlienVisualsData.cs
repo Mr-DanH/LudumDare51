@@ -22,6 +22,7 @@ public class AlienVisualsData : ScriptableObject
         for (int i = 0; i < num; i++)
         {
             AlienVisuals newData = GenerateAlienVisual();
+            generatedAliens.Add(newData);
         }
 
         return generatedAliens;
@@ -57,7 +58,7 @@ public class AlienVisualsData : ScriptableObject
     [System.Serializable]
     public class TextureSetupData : VisualElement
     {
-        public Texture Visual;
+        public Sprite Visual;
     }
 
     [System.Serializable]

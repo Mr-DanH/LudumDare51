@@ -18,7 +18,7 @@ public class FlyMinigame : Minigame
         //m_leftAlienSpeech.SetActive(false);
     }
     
-    public override void AlienArrived(Game.Alien alien)
+    public override void AlienArrived(Alien alien)
     {
         base.AlienArrived(alien);
 

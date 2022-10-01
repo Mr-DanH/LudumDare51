@@ -41,6 +41,15 @@ public class TableProp : MinigameProp, IPointerDownHandler, IDragHandler, IPoint
         if (m_thrown)
         {
             transform.position += m_velocity * Time.deltaTime;
+
+            Canvas canvas = GetComponentInParent<Canvas>();
+
+            RectTransform rectTransform = (RectTransform)transform;
+            Rect rect = rectTransform.rect;            
+            rect.position += (Vector2)rectTransform.position;
+
+            if(!rect.Overlaps(canvas.pixelRect))
+                gameObject.SetActive(false);
         }
     }
 }

@@ -4,40 +4,17 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {   
-    public enum eProgress
-    {
-        Available,
-        Active,
-        Success,
-        Fail
-    }
-
-    public class Alien
-    {
-        public eProgress m_progress;
-
-    }    
-
-    public GameObject m_alien;
+    [SerializeField] private AlienManager _alienManager;
+    [SerializeField] private Alien _alienObject;
+    private OngoingAlienData _currentAlien;
 
     public List<Minigame> m_minigames = new List<Minigame>();
 
-    const int NUM_ALIENS = 10;
-
-    List<Alien> m_aliens = new List<Alien>();
-
     IEnumerator Start()
     {
-        //Generate aliens
-        for (int i = 0; i < NUM_ALIENS; ++i)
-        {
-            Alien alien = new Alien();
-            m_aliens.Add(alien);
-        }
-        
-        m_alien.gameObject.SetActive(false);
+        _alienObject.gameObject.SetActive(false);
 
-        for (int i = 0; i < NUM_ALIENS; ++i)
+        for (int i = 0; i < _alienManager.NumAliens; ++i)
         {
             //Reset table
             foreach(var minigame in m_minigames)
@@ -46,17 +23,19 @@ public class Game : MonoBehaviour
             yield return new WaitForSeconds(2);
 
             Debug.Log($"Alien {i} arrive");
-            m_alien.gameObject.SetActive(true);
+            _currentAlien = _alienManager.GetNextAlien(round:1);
+            _alienObject.Setup(_currentAlien);
+            _alienObject.gameObject.SetActive(true);
             
             foreach(var minigame in m_minigames)
-                minigame.AlienArrived(m_aliens[i]);
+                minigame.AlienArrived(_alienObject);
 
             yield return new WaitForSeconds(10);
 
             Debug.Log($"Alien {i} leave");
             
             //Alien leaves (fail if still active)
-            m_alien.gameObject.SetActive(false);
+            _alienObject.gameObject.SetActive(false);
             
             foreach(var minigame in m_minigames)
                 minigame.AlienLeave();
@@ -65,11 +44,6 @@ public class Game : MonoBehaviour
         }
 
         //Game end
-    }
-
-    public void NextAlien()
-    {
-
     }
 
     void SuccessDate()

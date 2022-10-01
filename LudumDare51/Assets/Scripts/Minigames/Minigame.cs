@@ -20,7 +20,7 @@ public class Minigame : MonoBehaviour
 
     public List<MinigameProp> m_props;
 
-    protected Game.Alien m_alien;
+    protected Alien m_alien;
 
     public virtual void Awake()
     {
@@ -34,7 +34,7 @@ public class Minigame : MonoBehaviour
             prop.ResetState();
     }
 
-    public virtual void AlienArrived(Game.Alien alien)
+    public virtual void AlienArrived(Alien alien)
     {
         m_alien = alien;
     }
