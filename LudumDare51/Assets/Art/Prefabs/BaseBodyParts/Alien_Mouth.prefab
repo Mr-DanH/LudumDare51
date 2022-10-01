@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 5854504596900226968}
   - component: {fileID: 4280596106934923872}
   m_Layer: 5
-  m_Name: Eye_Image
+  m_Name: Mouth_Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
