@@ -26,6 +26,10 @@ public class Game : MonoBehaviour
             _currentAlien = _alienManager.GetNextAlien(round:1);
             _alienObject.Setup(_currentAlien);
             _alienObject.gameObject.SetActive(true);
+            _alienObject.Enter();
+            
+            while(_alienObject.IsMoving)
+                yield return null;
             
             foreach(var minigame in m_minigames)
                 minigame.AlienArrived(_alienObject);
@@ -34,6 +38,11 @@ public class Game : MonoBehaviour
 
             Debug.Log($"Alien {i} leave");
             
+            _alienObject.Exit();
+
+            while(_alienObject.IsMoving)
+                yield return null;
+
             //Alien leaves (fail if still active)
             _alienObject.gameObject.SetActive(false);
             
