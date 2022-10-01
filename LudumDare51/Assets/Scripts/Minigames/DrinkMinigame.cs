@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TablePropMinigame : Minigame
+public class DrinkMinigame : Minigame
 {
-    public override eType Type { get { return eType.TableProp; } }
+    public override eType Type { get { return eType.Drink; } }
+
+    public Drink m_actualDrink;
+
+    // void Awake()
+    // {
+    // }
+
 
     public override void ResetMinigame()
     {
@@ -20,5 +27,10 @@ public class TablePropMinigame : Minigame
     void Update()
     {
 
+    }
+
+    public void OrderDrink(Drink drink)
+    {
+        m_actualDrink.gameObject.SetActive(true);
     }
 }
