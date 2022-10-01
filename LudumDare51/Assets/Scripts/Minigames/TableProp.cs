@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class TableProp : MinigameProp, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    public TablePropMinigame m_minigame;
+    public eMinigameEvent m_event;
     public RectTransform m_table;
 
     public float m_gravity = 9.8f;
@@ -68,7 +70,10 @@ public class TableProp : MinigameProp, IPointerDownHandler, IDragHandler, IPoint
             
             Canvas canvas = GetComponentInParent<Canvas>();
             if(rect.yMax < canvas.pixelRect.yMin || rect.xMax < canvas.pixelRect.xMin || rect.xMin > canvas.pixelRect.xMax)
+            {
                 gameObject.SetActive(false);
+                m_minigame.PropEvent(m_event);
+            }
         }
     }
 }

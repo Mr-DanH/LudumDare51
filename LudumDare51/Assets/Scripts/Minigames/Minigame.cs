@@ -41,6 +41,12 @@ public class Minigame : MonoBehaviour
 
     public virtual void AlienLeave()
     {
+        m_alien = null;
+    }
 
+    public void PropEvent(eMinigameEvent minigameEvent)
+    {
+        if(m_alien != null)
+            m_alien.MinigameEvent(minigameEvent);
     }
 }

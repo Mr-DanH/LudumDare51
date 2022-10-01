@@ -1672,6 +1672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efeeabbb7b550a44f810bb24b2c4792e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_minigame: {fileID: 1276791836}
+  m_event: 0
   m_table: {fileID: 1856403743}
   m_gravity: 2000
 --- !u!1 &843286196
@@ -2213,6 +2215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efeeabbb7b550a44f810bb24b2c4792e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_minigame: {fileID: 1276791836}
+  m_event: 1
   m_table: {fileID: 1856403743}
   m_gravity: 2000
 --- !u!1 &1128788109

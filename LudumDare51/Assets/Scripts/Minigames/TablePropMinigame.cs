@@ -14,11 +14,5 @@ public class TablePropMinigame : Minigame
     public override void AlienArrived(Alien alien)
     {
         base.AlienArrived(alien);
-
-    }
-
-    void Update()
-    {
-
     }
 }
