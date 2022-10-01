@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DrinkMenu : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     public DrinkMinigame m_minigame;
     public Vector3 m_largePosition;
@@ -23,9 +23,10 @@ public class DrinkMenu : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         m_drinks = GetComponentsInChildren<Drink>();
     }
 
-    
-    void ResetProp()
+
+    public override void ResetState()
     {
+        base.ResetState();
         m_targetSize = Vector3.one * 0.5f;
         m_targetPosition = m_startPosition;
     }

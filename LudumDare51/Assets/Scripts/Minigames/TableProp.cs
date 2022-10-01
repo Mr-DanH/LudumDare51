@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TableProp : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+public class TableProp : MinigameProp, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     Vector3 m_velocity;
     int m_dragFrame;
     bool m_dragging;
     bool m_thrown;
 
-    void ResetProp()
+    public override void ResetState()
     {
+        base.ResetState();
         m_thrown = false;
     }
 

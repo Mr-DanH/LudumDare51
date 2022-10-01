@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StrengthItem : MonoBehaviour, IPointerDownHandler
+public class StrengthItem : MinigameProp, IPointerDownHandler
 {
     public StrengthMinigame m_minigame;
 
@@ -18,8 +18,9 @@ public class StrengthItem : MonoBehaviour, IPointerDownHandler
         m_startPos = transform.localPosition;
     }
 
-    void ResetProp()
+    public override void ResetState()
     {
+        base.ResetState();
         m_health = 10;
         m_offsetTime = 0;
     }

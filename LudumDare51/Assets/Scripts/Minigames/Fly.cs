@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Fly : MonoBehaviour, IPointerDownHandler
+public class Fly : MinigameProp, IPointerDownHandler
 {
     public void OnPointerDown(PointerEventData eventData)
     {
