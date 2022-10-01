@@ -32,5 +32,7 @@ public class DrinkMinigame : Minigame
     public void OrderDrink(Drink drink)
     {
         m_actualDrink.gameObject.SetActive(true);
+
+        m_actualDrink.GetComponent<MinigameProp>().DropOnscreen();
     }
 }

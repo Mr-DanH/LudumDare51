@@ -50,10 +50,11 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         }
     }
 
-    void Update()
+    public override void Update()
     {
-        transform.localScale = Vector3.one * Mathf.MoveTowards(transform.localScale.x, m_targetSize.x, Time.deltaTime);
+        base.Update();
 
+        transform.localScale = Vector3.one * Mathf.MoveTowards(transform.localScale.x, m_targetSize.x, Time.deltaTime);
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, m_targetPosition, (m_startPosition - m_largePosition).magnitude * Time.deltaTime * 2);
     }
 
