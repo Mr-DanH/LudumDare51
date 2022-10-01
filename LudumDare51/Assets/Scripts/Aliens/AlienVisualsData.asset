@@ -17,6 +17,10 @@ MonoBehaviour:
     Head: {fileID: 7362203270131723490, guid: b81fbb7c3d6756441b3d0e2b63b0cb51, type: 3}
   - Description: 
     Head: {fileID: 7362203270131723490, guid: a7d4ae2eb6d4bda469b3d9c43af447e7, type: 3}
+  - Description: 
+    Head: {fileID: 7362203270131723490, guid: d244d795e49a3454fa84d22f68dc055a, type: 3}
+  - Description: 
+    Head: {fileID: 7362203270131723490, guid: 6df58e5f37c9ad24ab356568302c9810, type: 3}
   HeadAccessories:
   - Description: 
     Visual: {fileID: 21300000, guid: 3209a3d54b42570419e29ef10d917bf1, type: 3}
@@ -37,6 +41,8 @@ MonoBehaviour:
     Visual: {fileID: 21300000, guid: 3eb61c8d3899c094ea1215fa38e4518a, type: 3}
   - Description: 
     Visual: {fileID: 21300000, guid: 62dcca4b5415c024bb04c95deab7d7e8, type: 3}
+  - Description: 
+    Visual: {fileID: 21300000, guid: 4cb290e6591e83245aa4667f650dbec3, type: 3}
   ArmPositions:
   - PositionIndex: 010000000300000004000000
   - PositionIndex: 0100000002000000
@@ -46,6 +52,10 @@ MonoBehaviour:
     Visual: {fileID: 21300000, guid: 8adc427c80c02704198b9ed3fcfc6941, type: 3}
   - Description: 
     Visual: {fileID: 21300000, guid: cef597b3dbeeaeb458bad1273b5807af, type: 3}
+  - Description: 
+    Visual: {fileID: 21300000, guid: 3d6a0516e3dbbec41bee5b96e4c6a039, type: 3}
+  - Description: 
+    Visual: {fileID: 21300000, guid: d329921e29cf1b64ab922d93824f4570, type: 3}
   EyePositions:
   - PositionIndex: 010000000200000003000000040000000500000006000000
   - PositionIndex: 0100000004000000
@@ -57,10 +67,18 @@ MonoBehaviour:
   - Description: 
     Pattern: {fileID: 2800000, guid: b4119bd8949b0fa46aa5f29abc8709c2, type: 3}
   Colourings:
-  - Skin: {r: 0, g: 0.15157586, b: 0.764151, a: 1}
-    Pattern: {r: 0.754717, g: 0.670737, b: 0, a: 1}
-  - Skin: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
-    Pattern: {r: 0.8633566, g: 0, b: 1, a: 1}
+  - Skin: {r: 0.3270737, g: 0.9245283, b: 0.6798988, a: 1}
+    Pattern: {r: 0.19215687, g: 0.50980395, b: 0.5764706, a: 1}
+  - Skin: {r: 1, g: 0.7028302, b: 0.7847944, a: 1}
+    Pattern: {r: 0.6377923, g: 0.46057317, b: 0.8490566, a: 1}
+  - Skin: {r: 0.16278034, g: 0.3208529, b: 0.5849056, a: 1}
+    Pattern: {r: 0.6531684, g: 0.7467349, b: 0.7735849, a: 1}
+  - Skin: {r: 0.62127995, g: 0.8679245, b: 0.38892844, a: 1}
+    Pattern: {r: 0.249644, g: 0.6226415, b: 0.46351847, a: 1}
+  - Skin: {r: 0.6132076, g: 0.25164652, b: 0.25164652, a: 1}
+    Pattern: {r: 0.24465743, g: 0.18142578, b: 0.254717, a: 1}
+  - Skin: {r: 1, g: 0.825405, b: 0.41037738, a: 1}
+    Pattern: {r: 0.745283, g: 0.34804708, b: 0.2917853, a: 1}
   Mouths:
   - Description: 
     Mouth: {fileID: 21300000, guid: a48f517dd7878bd4a89364c297230cbc, type: 3}
