@@ -10,6 +10,10 @@ public class Game : MonoBehaviour
 
     public List<Minigame> m_minigames = new List<Minigame>();
 
+    const float ALIEN_ARRIVE_DELAY = 1;
+    const float ALIEN_TIME = 10;
+    const float ALIEN_LEAVE_DELAY = 1;
+
     IEnumerator Start()
     {
         _alienObject.gameObject.SetActive(false);
@@ -20,7 +24,7 @@ public class Game : MonoBehaviour
             foreach(var minigame in m_minigames)
                 minigame.ResetMinigame();
                 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(ALIEN_ARRIVE_DELAY);
 
             Debug.Log($"Alien {i} arrive");
             _currentAlien = _alienManager.GetNextAlien(round:1);
@@ -34,7 +38,7 @@ public class Game : MonoBehaviour
             foreach(var minigame in m_minigames)
                 minigame.AlienArrived(_alienObject);
 
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(ALIEN_TIME);
 
             Debug.Log($"Alien {i} leave");
             
@@ -49,7 +53,7 @@ public class Game : MonoBehaviour
             foreach(var minigame in m_minigames)
                 minigame.AlienLeave();
             
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
         }
 
         //Game end
