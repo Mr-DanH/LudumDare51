@@ -10,7 +10,7 @@ public class AlienTorso : AlienBodyPart
 
     public Transform HeadTransform { get { return _headTransform; } }
 
-    public override void Setup(AlienVisuals data) 
+    public void Setup(AlienVisuals data) 
     {
         List<int> positionIndices = data.Arms.PositionIndex;
         Sprite arm = data.Arms.Element;

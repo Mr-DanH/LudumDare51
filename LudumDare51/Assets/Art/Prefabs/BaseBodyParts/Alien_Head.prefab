@@ -695,6 +695,7 @@ MonoBehaviour:
   - {fileID: 1197671531180482775}
   - {fileID: 3748941957374830858}
   _mouth: {fileID: 1710968843685881091}
+  _nameTag: {fileID: 7731291806377173385}
 --- !u!1 &7409319741945678688
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,7 +44,7 @@ public class Alien : MonoBehaviour
             Destroy(_head.gameObject);
         }
         _head = Instantiate<AlienHead>(visualData.Head.Head, _body.HeadTransform);
-        _head.Setup(visualData);
+        _head.Setup(ongoingData.Data.Name, visualData);
 
         m_moveType = (eMoveType)Random.Range(0, System.Enum.GetValues(typeof(eMoveType)).Length);
         
