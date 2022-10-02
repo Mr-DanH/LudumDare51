@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class Game : MonoBehaviour
+public class Game : SingletonMonoBehaviour<Game>
 {   
     [SerializeField] private AlienManager _alienManager;
     [SerializeField] private Alien _alienObject;
@@ -18,12 +18,29 @@ public class Game : MonoBehaviour
     const int ALIEN_TIME = 10;
     const float ALIEN_LEAVE_DELAY = 1;
 
-    void Awake()
+    public override void Awake()
     {
+        base.Awake();
         SceneManager.LoadScene("Screens", LoadSceneMode.Additive);
     }
 
-    IEnumerator Start()
+    void Start()
+    {
+        foreach(Transform child in m_timerSegmentParent)
+            child.gameObject.SetActive(false);
+
+        foreach(var minigame in m_minigames)
+        {
+            minigame.ResetMinigame();
+        }
+    }
+
+    public void StartGame()
+    {
+        StartCoroutine(StartGameCo());
+    }
+
+    IEnumerator StartGameCo()
     {
         _alienObject.gameObject.SetActive(false);
 
@@ -56,7 +73,8 @@ public class Game : MonoBehaviour
             for (int j = 0; j < ALIEN_TIME; ++j)
             {
                 yield return new WaitForSeconds(1);
-                m_timerSegmentParent.GetChild(j).gameObject.SetActive(true);
+                if (j < m_timerSegmentParent.childCount)
+                    m_timerSegmentParent.GetChild(j).gameObject.SetActive(true);
             }
 
             Debug.Log($"Alien {i} leave");
