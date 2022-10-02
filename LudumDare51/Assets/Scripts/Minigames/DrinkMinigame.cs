@@ -9,20 +9,9 @@ public class DrinkMinigame : Minigame
 
     public Drink m_actualDrink;
 
-    // void Awake()
-    // {
-    // }
-
-
     public override void ResetMinigame()
     {
         base.ResetMinigame();
-    }
-    
-    public override void AlienArrived(Alien alien)
-    {
-        base.AlienArrived(alien);
-
     }
 
     void Update()

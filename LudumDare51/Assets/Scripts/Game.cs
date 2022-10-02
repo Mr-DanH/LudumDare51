@@ -46,7 +46,7 @@ public class Game : MonoBehaviour
                 yield return null;
             
             foreach(var minigame in m_minigames)
-                minigame.AlienArrived(_alienObject);
+                minigame.AlienArrived(_alienObject, _currentAlien);
 
             yield return new WaitForSeconds(ALIEN_TIME);
 

@@ -20,9 +20,9 @@ public class FlyMinigame : Minigame
         base.ResetMinigame();
     }
     
-    public override void AlienArrived(Alien alien)
+    public override void AlienArrived(Alien alien, OngoingAlienData alienData)
     {
-        base.AlienArrived(alien);
+        base.AlienArrived(alien, alienData);
 
         if(m_fly.gameObject.activeSelf)
             return;
