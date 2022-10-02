@@ -47,6 +47,8 @@ public class Notepad : MonoBehaviour
         _bios.Clear();
         List<AlienData> aliens = AlienManager.Instance.GetAlienData();
         aliens.ForEach(GenerateBio);
+        _tabs[0].Select();
+        UiSelectBio(0, selected: true);
     }
 
     private void CleanupTabs()
