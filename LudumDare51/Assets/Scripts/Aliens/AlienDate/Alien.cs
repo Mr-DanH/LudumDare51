@@ -19,9 +19,11 @@ public class Alien : MonoBehaviour
     }
     eMoveType m_moveType;
 
+    const float DISTANCE_OFFSCREEN = 900;
+
     void Awake()
     {
-        m_startPos = transform.position;
+        m_startPos = transform.localPosition;
     }
 
     public void Setup(OngoingAlienData ongoingData)
@@ -62,16 +64,17 @@ public class Alien : MonoBehaviour
 
     public void Enter()
     {
-        StartCoroutine(Move(m_startPos - (Vector3.right * Screen.width * 0.75f), m_startPos));
+        StartCoroutine(Move(m_startPos - (Vector3.right * DISTANCE_OFFSCREEN), m_startPos));
     }
 
     public void Exit()
     {
-        StartCoroutine(Move(m_startPos, m_startPos + (Vector3.right * Screen.width * 0.75f)));
+        StartCoroutine(Move(m_startPos, m_startPos + (Vector3.right * DISTANCE_OFFSCREEN)));
     }
 
     IEnumerator Move(Vector3 from, Vector3 to)
     {
+        Debug.Log($"{from} {to} {Screen.height} {Screen.width}");
         IsMoving = true;
 
         float t = 0;
@@ -96,12 +99,12 @@ public class Alien : MonoBehaviour
                     break;
             }
 
-            transform.position = pos;
+            transform.localPosition = pos;
             transform.rotation = rot;
             yield return null;
         }
 
-        transform.position = to;
+        transform.localPosition = to;
         transform.rotation = Quaternion.identity;
 
         IsMoving = false;
