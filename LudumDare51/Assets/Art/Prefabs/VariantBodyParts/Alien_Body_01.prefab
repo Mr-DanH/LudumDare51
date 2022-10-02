@@ -60,12 +60,20 @@ PrefabInstance:
       value: -108
       objectReference: {fileID: 0}
     - target: {fileID: 3275109045606957855, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275109045606957855, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 104
       objectReference: {fileID: 0}
     - target: {fileID: 5075814078499781766, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
       propertyPath: m_Name
       value: Alien_Body_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268490032662148618, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5268490032662148618, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
       propertyPath: m_LocalRotation.w
@@ -87,6 +95,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2b791ed395e9ad442910c42e5c301a23, type: 3}
+    - target: {fileID: 8446373954083255878, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8446373954083255878, guid: 4928b2c055dd7d34cb9613938eb51633, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.46947163

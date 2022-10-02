@@ -36,15 +36,19 @@ MonoBehaviour:
   Bodies:
   - Description: egg
     Body: {fileID: 4114198452282757636, guid: 0b7f9774659151142b77a821c93756ef, type: 3}
-  - Description: vase
+  - Description: chunky
     Body: {fileID: 4114198452282757636, guid: c2f4bcd2c5970c84daa3e5d14cd9e8fe, type: 3}
+  - Description: vase
+    Body: {fileID: 4114198452282757636, guid: b83412c95429c6046837db69f6ac94f3, type: 3}
   Arms:
-  - Description: stumps
+  - Description: stump
     Visual: {fileID: 21300000, guid: 3eb61c8d3899c094ea1215fa38e4518a, type: 3}
   - Description: claw
     Visual: {fileID: 21300000, guid: 62dcca4b5415c024bb04c95deab7d7e8, type: 3}
   - Description: tentacle
     Visual: {fileID: 21300000, guid: 4cb290e6591e83245aa4667f650dbec3, type: 3}
+  - Description: wing
+    Visual: {fileID: 21300000, guid: fa5572676bb40b14f882a7cd78a8226f, type: 3}
   ArmPositions:
   - PositionIndex: 0000000001000000
   - PositionIndex: 0200000003000000

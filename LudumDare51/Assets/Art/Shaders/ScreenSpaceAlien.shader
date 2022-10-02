@@ -13,6 +13,7 @@ Shader "LD51/ScreenSpaceAlien"
     {
         Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         LOD 100
+        Cull Off
         Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
