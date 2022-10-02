@@ -91,6 +91,11 @@ public class SpeechMinigame : Minigame
         m_leftPlayerSpeech.alpha = 0.3f;
         m_rightPlayerSpeech.alpha = 0.3f;
 
+        m_leftPlayerSpeech.transform.Find("Agree").gameObject.SetActive(m_state == eState.Left);
+        m_leftPlayerSpeech.transform.Find("Disagree").gameObject.SetActive(m_state == eState.Right);
+        m_rightPlayerSpeech.transform.Find("Agree").gameObject.SetActive(m_state == eState.Right);
+        m_rightPlayerSpeech.transform.Find("Disagree").gameObject.SetActive(m_state == eState.Left);
+
         m_dragState = eState.Waiting;
     }
 
