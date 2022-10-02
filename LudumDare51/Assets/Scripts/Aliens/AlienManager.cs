@@ -33,9 +33,12 @@ public class AlienManager : MonoBehaviour
         List<AlienVisuals> visuals = visualsData.GenerateAlienVisuals(numberAliens);
         // todo - get traits
 
+        AlienNameGenerator nameGen = GetComponent<AlienNameGenerator>();
+        nameGen.ResetNames(numberAliens);
+
         for (int i = 0; i < numberAliens; i++)
         {
-            AlienData newData = new AlienData(visuals[i]);
+            AlienData newData = new AlienData(visuals[i], nameGen.GetName(i));
             alienData.Add(new OngoingAlienData(newData));
         }
     }
