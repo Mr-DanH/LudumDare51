@@ -95,10 +95,15 @@ public class StrengthItem : MinigameProp, IPointerDownHandler
 
     public override void Update()
     {
+        bool wasFalling = IsFalling;
+
         base.Update();
 
-        if(m_falling)
+        if(IsFalling)
             return;
+
+        if(wasFalling)
+            m_startPos = transform.localPosition;
 
         m_offsetTime = Mathf.MoveTowards(m_offsetTime, 0, Time.deltaTime / m_damageShakeTime);
         float angle = 2 * Mathf.PI * Random.value;
