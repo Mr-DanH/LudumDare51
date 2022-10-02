@@ -21,11 +21,10 @@ public class AlienNameGenerator : MonoBehaviour
 
         m_excludedSecondIndices.Clear();
         m_excludedThirdIndices.Clear();
-        for (int i = 0; i < numAliens; ++i)
-        {
+        for (int i = 0; i < MIDDLE.Length; ++i)
             m_excludedSecondIndices.Add(new List<int>());
+        for (int i = 0; i < POSTFIXES.Length; ++i)
             m_excludedThirdIndices.Add(new List<int>());
-        }
     }
 
     string RandomArrayElement(string[] array)
@@ -57,7 +56,7 @@ public class AlienNameGenerator : MonoBehaviour
 
         int secondIndex = GetIndex(MIDDLE.Length, m_excludedSecondIndices[firstIndex]);
 
-        int thirdIndex = GetIndex(MIDDLE.Length, m_excludedThirdIndices[secondIndex]);
+        int thirdIndex = GetIndex(POSTFIXES.Length, m_excludedThirdIndices[secondIndex]);
 
         return PREFIXES[firstIndex] + MIDDLE[secondIndex] + POSTFIXES[thirdIndex];
     }

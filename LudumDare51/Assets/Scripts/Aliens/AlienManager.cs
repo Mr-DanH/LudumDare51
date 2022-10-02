@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlienManager : MonoBehaviour
+public class AlienManager : SingletonMonoBehaviour<AlienManager>
 {
     [SerializeField] private AlienVisualsData visualsData;
     [SerializeField] private AlienTraits alienTraits;

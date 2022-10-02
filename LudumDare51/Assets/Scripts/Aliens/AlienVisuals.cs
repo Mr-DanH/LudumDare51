@@ -41,6 +41,7 @@ public class AlienVisuals
     public class ColouringData : VisualElement
     {
         public Texture Pattern;
+        public string PaletteDescription;
         public Color PatternColour;
         public Color SkinColour;
     }
