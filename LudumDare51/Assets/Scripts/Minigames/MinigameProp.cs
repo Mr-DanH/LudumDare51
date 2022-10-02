@@ -54,13 +54,16 @@ public class MinigameProp : MonoBehaviour
             Rect rect = rectTransform.rect;            
             rect.position += (Vector2)rectTransform.position;
 
-            Rect tableRect = m_table.rect;            
-            tableRect.position += (Vector2)m_table.position;
-
-            if(rect.Overlaps(tableRect))
+            if(m_table != null)
             {
-                m_falling = false;
-                return;
+                Rect tableRect = m_table.rect;            
+                tableRect.position += (Vector2)m_table.position;
+
+                if(rect.Overlaps(tableRect))
+                {
+                    m_falling = false;
+                    return;
+                }
             }
 
             m_velocity.y -= GRAVITY * Time.deltaTime;
