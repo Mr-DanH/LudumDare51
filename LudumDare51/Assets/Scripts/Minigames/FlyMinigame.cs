@@ -29,6 +29,7 @@ public class FlyMinigame : Minigame
 
         m_fly.gameObject.SetActive(true);
         m_fly.transform.localPosition = m_fly.StartPos;
+        m_fly.transform.localRotation = Quaternion.identity;
 
         RandomiseSpeedScale(Random.value > 0.5f);
 
@@ -78,7 +79,7 @@ public class FlyMinigame : Minigame
 
     void Update()
     {
-        if(!m_fly.gameObject.activeSelf)
+        if(!m_fly.gameObject.activeSelf || m_fly.IsFalling)
             return;
 
         Vector3 flyPos = m_fly.transform.position;

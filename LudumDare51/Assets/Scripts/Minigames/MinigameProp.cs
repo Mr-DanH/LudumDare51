@@ -12,11 +12,14 @@ public class MinigameProp : MonoBehaviour
     bool m_active;
     
     Vector3 m_velocity;
-    protected bool m_falling;
+    Vector3 m_angularVelocity;
+    bool m_falling;
+    bool m_hasFell;
     
     const float GRAVITY = 2000;
 
     public Vector3 StartPos { get { return m_pos; } }
+    public bool IsFalling { get { return m_falling; } }
 
     public virtual void StoreState()
     {
@@ -44,14 +47,22 @@ public class MinigameProp : MonoBehaviour
 
     public void Throw(Vector3 velocity)
     {
+        Throw(velocity, Vector3.zero);
+    }
+    public void Throw(Vector3 velocity, Vector3 angularVelocity)
+    {
         m_velocity = velocity;
+        m_angularVelocity = angularVelocity;
         m_falling = true;
+        m_hasFell = false;
     }
 
     public Rect GetWorldRect()
     {
         RectTransform rectTransform = (RectTransform)transform;
-        Rect rect = rectTransform.rect;            
+        Rect rect = rectTransform.rect;
+        rect.position *= (Vector2)rectTransform.lossyScale; 
+        rect.size *= (Vector2)rectTransform.lossyScale;           
         rect.position += (Vector2)rectTransform.position;
         return rect;
     }
@@ -70,11 +81,18 @@ public class MinigameProp : MonoBehaviour
 
             if(m_table != null)
             {
-                Rect tableRect = m_table.rect;            
+                Rect tableRect = m_table.rect;  
+                tableRect.position *= (Vector2)m_table.lossyScale;  
+                tableRect.size *= (Vector2)m_table.lossyScale;         
                 tableRect.position += (Vector2)m_table.position;
 
                 if(rect.Overlaps(tableRect))
                 {
+                    if(m_hasFell)
+                    {
+                        float yOverlap = tableRect.yMax - rect.yMin;
+                        transform.position += Vector3.up * yOverlap;
+                    }
                     m_falling = false;
                     return;
                 }
@@ -82,13 +100,17 @@ public class MinigameProp : MonoBehaviour
 
             m_velocity.y -= GRAVITY * Time.deltaTime;
             transform.position += m_velocity * Time.deltaTime;
+            transform.rotation *= Quaternion.AngleAxis(m_angularVelocity.magnitude * Time.deltaTime, m_angularVelocity);
             
             Rect canvasRect = GetCanvasRect();
             if(rect.yMax < canvasRect.yMin || rect.xMax < canvasRect.xMin || rect.xMin > canvasRect.xMax)
             {
+                m_falling = false;
                 gameObject.SetActive(false);
                 LeavePlayArea();
             }
+
+            m_hasFell = true;
         }
     }
 
