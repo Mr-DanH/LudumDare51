@@ -39,7 +39,7 @@ public class SpeechMinigame : Minigame
     {
         base.AlienArrived(alien, alienData);        
 
-        m_time = Time.time + 2;
+        m_time = Time.time + 4;
         m_state = eState.Waiting;
     }
 
