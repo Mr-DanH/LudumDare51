@@ -70,6 +70,6 @@ public class AlienManager : SingletonMonoBehaviour<AlienManager>
             _alienData.Add(new OngoingAlienData(newData));
         }
 
-        onGeneratedAliens.Invoke();
+        onGeneratedAliens?.Invoke();
     }
 }
