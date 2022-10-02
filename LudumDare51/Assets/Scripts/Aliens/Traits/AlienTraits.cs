@@ -8,18 +8,24 @@ public class AlienTraits : ScriptableObject
     [SerializeField] List<TraitSetupData> _candleTraits;
     [SerializeField] List<TraitSetupData> _flowerTraits;
     [SerializeField] List<TraitSetupData> _flyTraits;
+    [SerializeField] List<TraitSetupData> _strengthTraits;
     [SerializeField] List<TraitSetupData> _drinkTraits;
     [SerializeField] List<TraitSetupData> _dialogueTraits;
 
-    public List<Trait> GenerateTraits()
+    public List<Trait> GenerateTraits(int num)
     {
         List<Trait> generatedTraits = new List<Trait>();
 
         generatedTraits.Add(GenerateTraitFromList(_candleTraits));
         generatedTraits.Add(GenerateTraitFromList(_flowerTraits));
         generatedTraits.Add(GenerateTraitFromList(_flyTraits));
+        generatedTraits.Add(GenerateTraitFromList(_strengthTraits));
         generatedTraits.Add(GenerateTraitFromList(_drinkTraits));
         generatedTraits.Add(GenerateTraitFromList(_dialogueTraits));
+
+        generatedTraits.Shuffle<Trait>();
+
+        generatedTraits.RemoveRange(num-1, generatedTraits.Count-num);
 
         return generatedTraits;
     }
@@ -37,6 +43,7 @@ public class AlienTraits : ScriptableObject
         private List<eMinigameEvent> _events;
         private bool _isPositive;
 
+        public string Description { get { return _description; } }
         public List<eMinigameEvent> Events { get { return _events; } }
         public bool IsPositive { get { return _isPositive; } }
         public bool IsCompleted { get; private set; }

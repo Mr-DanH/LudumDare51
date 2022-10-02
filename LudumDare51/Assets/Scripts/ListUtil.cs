@@ -22,4 +22,18 @@ public static class ListUtil
 
         return list[Random.Range(0, list.Count)];
     }
+
+    static System.Random _random = new System.Random();
+    
+    public static void Shuffle<T>(this List<T> list)
+    {
+        int n = list.Count;
+        for (int i = 0; i < (n - 1); i++)
+        {
+            int r = i + _random.Next(n - i);
+            T t = list[r];
+            list[r] = list[i];
+            list[i] = t;
+        }
+    }
 }

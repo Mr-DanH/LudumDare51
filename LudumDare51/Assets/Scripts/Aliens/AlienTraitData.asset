@@ -33,14 +33,21 @@ MonoBehaviour:
   - Description: Emotional support animal
     IsPositive: 0
     MinigameEvents: 02000000
+  _strengthTraits:
+  - Description: SMASSSSHHH
+    IsPositive: 1
+    MinigameEvents: 03000000
+  - Description: Pacifist
+    IsPositive: 0
+    MinigameEvents: 03000000
   _drinkTraits:
-  - Description: 
+  - Description: Drinks A & C
     IsPositive: 1
     MinigameEvents: 0400000006000000
-  - Description: 
+  - Description: Drinks B & D
     IsPositive: 1
     MinigameEvents: 0500000007000000
-  - Description: 
+  - Description: Drinks B
     IsPositive: 1
     MinigameEvents: 05000000
   _dialogueTraits:

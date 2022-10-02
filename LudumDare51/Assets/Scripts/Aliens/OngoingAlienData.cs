@@ -30,7 +30,7 @@ public class OngoingAlienData
         AlienTraits.Trait foundTrait = Data.Traits.Find(x=>x.Events.Contains(minigameEvent));
         if (foundTrait != null)
         {
-            Debug.Log($"EventHappened {minigameEvent}");
+            Debug.Log($"EventHappened {minigameEvent}, thoughts {foundTrait.Description}");
             AdjustAttraction(foundTrait.IsPositive);
             foundTrait.Complete();
         }
@@ -41,7 +41,7 @@ public class OngoingAlienData
         List<AlienTraits.Trait> uncompletedTraits = Data.Traits.FindAll(x=>!x.IsCompleted && x.IsPositive);
         foreach(var trait in uncompletedTraits)
         {
-            Debug.Log($"Uncompleted Trait {trait}. OH NO!");
+            Debug.Log($"Uncompleted Trait {trait.Description}. OH NO!");
             AdjustAttraction(isPositive: false);
         }
     }

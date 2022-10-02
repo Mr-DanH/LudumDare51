@@ -7,6 +7,7 @@ public class AlienManager : MonoBehaviour
     [SerializeField] private AlienVisualsData visualsData;
     [SerializeField] private AlienTraits alienTraits;
     [SerializeField] private int numberAliens = 10;
+    [SerializeField] private Vector2 numRangeTraits = new Vector2(2,4);
     
     private List<OngoingAlienData> alienData = new List<OngoingAlienData>();
     private OngoingAlienData _currentAlienDate;
@@ -47,13 +48,12 @@ public class AlienManager : MonoBehaviour
     private void GenerateAliens()
     {
         List<AlienVisuals> visuals = visualsData.GenerateAlienVisuals(numberAliens);
-        List<AlienTraits.Trait> traits = alienTraits.GenerateTraits();
-
         AlienNameGenerator nameGen = GetComponent<AlienNameGenerator>();
         nameGen.ResetNames(numberAliens);
 
         for (int i = 0; i < numberAliens; i++)
         {
+            List<AlienTraits.Trait> traits = alienTraits.GenerateTraits(Random.Range((int)numRangeTraits.x, (int)numRangeTraits.y+1));
             AlienData newData = new AlienData(visuals[i], traits, nameGen.GetName(i));
             alienData.Add(new OngoingAlienData(newData));
         }

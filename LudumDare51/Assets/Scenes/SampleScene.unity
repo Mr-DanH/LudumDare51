@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualsData: {fileID: 11400000, guid: 7b55c7a1bd8981a40a1f3e4fb4a385df, type: 2}
+  alienTraits: {fileID: 11400000, guid: 4ddf7334d6c5a2e499596d70d65047a7, type: 2}
   numberAliens: 10
 --- !u!4 &115704211
 Transform:
