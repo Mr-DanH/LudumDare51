@@ -6,16 +6,21 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
 {
     public DrinkMinigame m_minigame;
     public Vector3 m_largePosition;
+    public Vector3 m_largeSize;
+    public Vector3 m_largeRotation;
 
     public Image m_highlight;
 
     Vector3 m_startPosition;
     Vector3 m_startSize;
+    Quaternion m_startRotation;
 
     Vector3 m_fromSize;
     Vector3 m_fromPosition;
+    Quaternion m_fromRotation;
     Vector3 m_targetSize;
     Vector3 m_targetPosition;
+    Quaternion m_targetRotation;
     float m_lerpTime;
     
     Drink[] m_drinks;
@@ -27,6 +32,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
     {
         m_startPosition = transform.localPosition;
         m_startSize = transform.localScale;
+        m_startRotation = transform.localRotation;
         m_drinks = GetComponentsInChildren<Drink>();
     }
 
@@ -37,6 +43,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         m_highlight.gameObject.SetActive(false);
         m_targetSize = m_startSize;
         m_targetPosition = m_startPosition;
+        m_targetRotation = m_startRotation;
         m_lerpTime = 1;
         m_drinkOrdered = false;
     }
@@ -46,7 +53,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         if(m_drinkOrdered)
             return;
 
-        StartLerp(Vector3.one, m_largePosition);
+        StartLerp(m_largeSize, m_largePosition, Quaternion.Euler(m_largeRotation));
         m_selected = null;
     }
 
@@ -55,7 +62,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         if(m_drinkOrdered)
             return;
 
-        StartLerp(m_startSize, m_startPosition);
+        StartLerp(m_startSize, m_startPosition, m_startRotation);
 
         if(m_selected != null)
         {
@@ -65,13 +72,15 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         }
     }
 
-    void StartLerp(Vector3 size, Vector3 pos)
+    void StartLerp(Vector3 size, Vector3 pos, Quaternion rot)
     {
         m_lerpTime = 0;
         m_fromSize = transform.localScale;
         m_fromPosition = transform.localPosition;
+        m_fromRotation = transform.localRotation;
         m_targetSize = size;
         m_targetPosition = pos;
+        m_targetRotation = rot;
     }
 
     public override void Update()
@@ -81,6 +90,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         m_lerpTime += Time.deltaTime * 2;
         transform.localScale = Vector3.Lerp(m_fromSize, m_targetSize, m_lerpTime);
         transform.localPosition = Vector3.Lerp(m_fromPosition, m_targetPosition, m_lerpTime);
+        transform.localRotation = Quaternion.Lerp(m_fromRotation, m_targetRotation, m_lerpTime);
     }
 
     public void OnDrag(PointerEventData eventData)
