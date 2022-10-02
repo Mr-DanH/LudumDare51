@@ -143,6 +143,8 @@ public class SpeechMinigame : Minigame
                 PropEvent(eMinigameEvent.SpeechAgreed);
             else
                 PropEvent(eMinigameEvent.SpeechDisagreed);
+                
+            m_speechbutton.SetActive(false);
         }
 
         m_time = Time.time + 1;
