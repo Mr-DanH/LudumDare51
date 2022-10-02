@@ -17,20 +17,23 @@ public class AlienVisualsData : ScriptableObject
     [SerializeField] private List<ColourPaletteSetupData> Colourings;
     [SerializeField] private List<MouthData> Mouths;
 
+    List<ColourPaletteSetupData> _generatedColourings = new List<ColourPaletteSetupData>();
+
     public List<AlienVisuals> GenerateAlienVisuals(int num)
     {
+        GenerateAllColouringData();
         List<AlienVisuals> generatedAliens = new List<AlienVisuals>();
 
         for (int i = 0; i < num; i++)
         {
-            AlienVisuals newData = GenerateAlienVisual();
+            AlienVisuals newData = GenerateAlienVisual(i);
             generatedAliens.Add(newData);
         }
 
         return generatedAliens;
     }
 
-    private AlienVisuals GenerateAlienVisual()
+    private AlienVisuals GenerateAlienVisual(int index)
     {
         AlienVisuals visuals = new AlienVisuals();
 
@@ -39,7 +42,7 @@ public class AlienVisualsData : ScriptableObject
         visuals.Body = Bodies.RandomElement<BodyData>();
         visuals.Eyes = GeneratePositionalVisualElement(Eyes, EyePositions);
         visuals.Arms = GeneratePositionalVisualElement(Arms, ArmPositions);
-        visuals.Colouring = GenerateColouringData();
+        visuals.Colouring = GenerateFashionData(index);
         visuals.Mouths = Mouths.RandomElement<MouthData>();
 
         return visuals;
@@ -57,10 +60,37 @@ public class AlienVisualsData : ScriptableObject
         return newElement;
     }
 
-    private ColouringData GenerateColouringData()
+    private void GenerateAllColouringData()
+    {
+        _generatedColourings = new List<ColourPaletteSetupData>(Colourings);
+
+        List<ColourPaletteSetupData> colourings = new List<ColourPaletteSetupData>(Colourings);
+        for (int i = _generatedColourings.Count; i < AlienManager.Instance.NumAliens; i++)
+        {
+            ColourPaletteSetupData colour = colourings.RandomElement<ColourPaletteSetupData>();
+            _generatedColourings.Add(colour);
+
+            colourings.Remove(colour);
+
+            if (colourings.Count == 0)
+            {
+                colourings = new List<ColourPaletteSetupData>(Colourings);
+            }
+        }
+        
+        _generatedColourings.Shuffle();
+
+        if (_generatedColourings.Count > AlienManager.Instance.NumAliens)
+        {
+            int diff = _generatedColourings.Count - AlienManager.Instance.NumAliens;
+            _generatedColourings.RemoveRange(0, diff-1);
+        }
+    }
+
+    private ColouringData GenerateFashionData(int index)
     {
         PatternSetupData patternData = Patterns.RandomElement<PatternSetupData>();
-        ColourPaletteSetupData colourPaletteData = Colourings.RandomElement<ColourPaletteSetupData>();
+        ColourPaletteSetupData colourPaletteData = _generatedColourings[index];
         ColouringData newData = new ColouringData()
         {
             Pattern = patternData.Pattern,
