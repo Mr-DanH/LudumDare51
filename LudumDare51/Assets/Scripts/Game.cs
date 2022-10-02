@@ -56,7 +56,8 @@ public class Game : MonoBehaviour
             for (int j = 0; j < ALIEN_TIME; ++j)
             {
                 yield return new WaitForSeconds(1);
-                m_timerSegmentParent.GetChild(j).gameObject.SetActive(true);
+                if (j < m_timerSegmentParent.childCount)
+                    m_timerSegmentParent.GetChild(j).gameObject.SetActive(true);
             }
 
             Debug.Log($"Alien {i} leave");
