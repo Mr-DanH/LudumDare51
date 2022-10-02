@@ -8,8 +8,9 @@ public class AlienHead : AlienBodyPart
     [SerializeField] List<Image> _eyes;
     [SerializeField] List<Image> _accessories;
     [SerializeField] Image _mouth;
+    [SerializeField] Text _nameTag;
 
-    public override void Setup(AlienVisuals data)
+    public void Setup(string name, AlienVisuals data)
     {
         List<int> eyePositionIndices = data.Eyes.PositionIndex;
         Sprite eye = data.Eyes.Element;
@@ -20,5 +21,7 @@ public class AlienHead : AlienBodyPart
         SetPositionalImages(accessoryPositionIndices, _accessories, accessory);
 
         _mouth.sprite = data.Mouths.Mouth;
+
+        _nameTag.text = name;
     }
 }
