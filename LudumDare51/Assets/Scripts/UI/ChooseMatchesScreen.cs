@@ -35,7 +35,7 @@ public class ChooseMatchesScreen : MonoBehaviour
             delegate(OngoingAlienData alien)
             {
                 Text text = m_toggles[toggleIndex++].GetComponentInChildren<Text>(); 
-                text.text = toggleIndex.ToString();
+                text.text = alien.Data.Name;
             });
 
         StartCoroutine(Animate(m_from, m_startPos, null));

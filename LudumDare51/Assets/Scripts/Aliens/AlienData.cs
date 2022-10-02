@@ -8,8 +8,11 @@ public class AlienData
     
     public AlienVisuals Visuals { get { return _visuals; } }
 
-    public AlienData(AlienVisuals visuals)
+    public string Name { get; private set; }
+
+    public AlienData(AlienVisuals visuals, string name)
     {
         _visuals = visuals;
+        Name = name;
     }
 }
