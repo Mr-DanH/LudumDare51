@@ -11,11 +11,11 @@ public class FlyMinigame : Minigame
     public float m_horizontalSpeed = 100;
     public float m_vertSpeed = 25;
 
+    float m_speed;
+
     public override void ResetMinigame()
     {
         base.ResetMinigame();
-
-        //m_leftAlienSpeech.SetActive(false);
     }
     
     public override void AlienArrived(Alien alien)
@@ -24,6 +24,14 @@ public class FlyMinigame : Minigame
 
         m_fly.gameObject.SetActive(true);
 
+        m_speed = m_horizontalSpeed * Random.Range(0.75f, 1.25f);
+        if(Random.value > 0.5f)
+        {
+            m_speed *= -1;
+            Vector3 pos = m_fly.transform.localPosition;
+            pos.x *= -1;
+            m_fly.transform.localPosition = pos;        
+        }
     }
 
     public override void AlienLeave()
@@ -34,17 +42,6 @@ public class FlyMinigame : Minigame
     void Update()
     {
         if(m_fly.gameObject.activeSelf)
-            m_fly.transform.position += new Vector3(m_horizontalSpeed, Mathf.Cos(Time.time * Mathf.PI) * m_vertSpeed) * Time.deltaTime;
+            m_fly.transform.position += new Vector3(m_speed, Mathf.Cos(Time.time * Mathf.PI) * m_vertSpeed) * Time.deltaTime;
     }
-
-    // public void OnPress()
-    // {
-    //     m_leftPlayerSpeech.gameObject.SetActive(true);
-    //     m_rightPlayerSpeech.gameObject.SetActive(true);
-
-    //     m_leftPlayerSpeech.alpha = 0.3f;
-    //     m_rightPlayerSpeech.alpha = 0.3f;
-
-    //     m_dragState = eState.Waiting;
-    // }
 }
