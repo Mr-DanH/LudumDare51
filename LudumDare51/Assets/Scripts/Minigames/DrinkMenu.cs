@@ -10,9 +10,13 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
     public Image m_highlight;
 
     Vector3 m_startPosition;
+    Vector3 m_startSize;
 
+    Vector3 m_fromSize;
+    Vector3 m_fromPosition;
     Vector3 m_targetSize;
     Vector3 m_targetPosition;
+    float m_lerpTime;
     
     Drink[] m_drinks;
 
@@ -21,6 +25,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
     void Awake()
     {
         m_startPosition = transform.localPosition;
+        m_startSize = transform.localScale;
         m_drinks = GetComponentsInChildren<Drink>();
     }
 
@@ -28,21 +33,20 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
     public override void ResetState()
     {
         base.ResetState();
-        m_targetSize = Vector3.one * 0.5f;
+        m_targetSize = m_startSize;
         m_targetPosition = m_startPosition;
+        m_lerpTime = 1;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        m_targetSize = Vector3.one;
-        m_targetPosition = m_largePosition;
+        StartLerp(Vector3.one, m_largePosition);
         m_selected = null;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        m_targetSize = Vector3.one * 0.5f;
-        m_targetPosition = m_startPosition;
+        StartLerp(m_startSize, m_startPosition);
 
         if(m_selected != null)
         {
@@ -51,12 +55,22 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         }
     }
 
+    void StartLerp(Vector3 size, Vector3 pos)
+    {
+        m_lerpTime = 0;
+        m_fromSize = transform.localScale;
+        m_fromPosition = transform.localPosition;
+        m_targetSize = size;
+        m_targetPosition = pos;
+    }
+
     public override void Update()
     {
         base.Update();
 
-        transform.localScale = Vector3.one * Mathf.MoveTowards(transform.localScale.x, m_targetSize.x, Time.deltaTime);
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, m_targetPosition, (m_startPosition - m_largePosition).magnitude * Time.deltaTime * 2);
+        m_lerpTime += Time.deltaTime * 2;
+        transform.localScale = Vector3.Lerp(m_fromSize, m_targetSize, m_lerpTime);
+        transform.localPosition = Vector3.Lerp(m_fromPosition, m_targetPosition, m_lerpTime);
     }
 
     public void OnDrag(PointerEventData eventData)
