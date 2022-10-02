@@ -31,7 +31,10 @@ public class SpeechMinigame : Minigame
         "A lot of solar storms lately...",
         "How about that space soccer...",
         "I've heard octopi make great pets...",
-        "I'm thinking of growing an extra leg..."
+        "I'm thinking of growing an extra leg...",
+        "Holo-movies aren't what they used to be...",
+        "Plutonian cooking is pretty special...",
+        "Owning a comet is so last-century..."
         };
     int m_lastStatementIndex;
     

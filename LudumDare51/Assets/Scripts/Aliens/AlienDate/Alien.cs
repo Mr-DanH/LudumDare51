@@ -74,7 +74,6 @@ public class Alien : MonoBehaviour
 
     IEnumerator Move(Vector3 from, Vector3 to)
     {
-        Debug.Log($"{from} {to} {Screen.height} {Screen.width}");
         IsMoving = true;
 
         float t = 0;

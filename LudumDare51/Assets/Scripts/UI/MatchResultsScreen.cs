@@ -60,6 +60,7 @@ public class MatchResultsScreen : SingletonMonoBehaviour<MatchResultsScreen>
 
     void NextCallback()
     {
+        gameObject.SetActive(false);
         TitleScreen.Instance.Show();
     }
 }
