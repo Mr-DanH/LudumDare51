@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrinkMinigame : Minigame
 {
@@ -32,6 +33,8 @@ public class DrinkMinigame : Minigame
     public void OrderDrink(Drink drink)
     {
         m_actualDrink.gameObject.SetActive(true);
+        
+        m_actualDrink.transform.GetChild(0).GetComponent<Image>().sprite = drink.m_sprite;
 
         m_actualDrink.GetComponent<MinigameProp>().DropOnscreen();
     }
