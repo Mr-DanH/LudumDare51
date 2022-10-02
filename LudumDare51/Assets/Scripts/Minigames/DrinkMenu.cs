@@ -33,6 +33,9 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         m_startPosition = transform.localPosition;
         m_startSize = transform.localScale;
         m_startRotation = transform.localRotation;
+        m_targetPosition = m_startPosition;
+        m_targetSize = m_startSize;
+        m_targetRotation = m_startRotation;
         m_drinks = GetComponentsInChildren<Drink>();
     }
 
