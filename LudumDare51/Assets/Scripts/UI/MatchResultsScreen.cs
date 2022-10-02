@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchResultsScreen : MonoBehaviour
+public class MatchResultsScreen : SingletonMonoBehaviour<MatchResultsScreen>
 {
-    // Start is called before the first frame update
-    void Start()
+    ScreenSwoosh m_screenSwoosh;
+
+    public override void Awake()
     {
-        
+        base.Awake();
+        m_screenSwoosh = GetComponent<ScreenSwoosh>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        gameObject.SetActive(false);
+    }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+
+        m_screenSwoosh.AnimateOn();
+    }
+
+    public void Next()
+    {
+        m_screenSwoosh.AnimateOff(null);
     }
 }

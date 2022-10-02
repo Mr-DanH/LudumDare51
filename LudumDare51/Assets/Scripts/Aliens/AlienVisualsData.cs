@@ -66,7 +66,8 @@ public class AlienVisualsData : ScriptableObject
             Pattern = patternData.Pattern,
             Description = patternData.Description,
             PatternColour = colourPaletteData.Pattern,
-            SkinColour = colourPaletteData.Skin
+            SkinColour = colourPaletteData.Skin,
+            PaletteDescription = colourPaletteData.Description
         };
         return newData;
     }
@@ -85,7 +86,7 @@ public class AlienVisualsData : ScriptableObject
     }
 
     [System.Serializable]
-    public class ColourPaletteSetupData
+    public class ColourPaletteSetupData : VisualElement
     {
         public Color Skin;
         public Color Pattern;

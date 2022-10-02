@@ -136,7 +136,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: eb04863efe142754697469aad174f0ed, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 7083309699022747387}
   - component: {fileID: 7083309699022747386}
   - component: {fileID: 2943151005250627010}
+  - component: {fileID: 7083309698367340653}
   m_Layer: 5
   m_Name: ChooseMatchesScreen
   m_TagString: Untagged
@@ -553,7 +554,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4040cc5cd1ad7d49a3f5f1fa431fd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_alienManager: {fileID: 0}
+  m_animatedChild: {fileID: 7083309697904044837}
+  m_from: {x: -900, y: 0, z: 0}
+--- !u!114 &7083309698367340653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083309699022747365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da39df7b09faba499d668a8c7c84949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_animatedChild: {fileID: 7083309697904044837}
   m_from: {x: -900, y: 0, z: 0}
 --- !u!1 &8061288041958711262

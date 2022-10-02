@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: AlienVisualsData
   m_EditorClassIdentifier: 
   Heads:
-  - Description: 
+  - Description: egg
     Head: {fileID: 7362203270131723490, guid: b81fbb7c3d6756441b3d0e2b63b0cb51, type: 3}
-  - Description: 
+  - Description: square
     Head: {fileID: 7362203270131723490, guid: a7d4ae2eb6d4bda469b3d9c43af447e7, type: 3}
-  - Description: 
+  - Description: tentacle
     Head: {fileID: 7362203270131723490, guid: d244d795e49a3454fa84d22f68dc055a, type: 3}
-  - Description: 
+  - Description: squashed
     Head: {fileID: 7362203270131723490, guid: 6df58e5f37c9ad24ab356568302c9810, type: 3}
   HeadAccessories:
-  - Description: 
+  - Description: antenna
     Visual: {fileID: 21300000, guid: 3209a3d54b42570419e29ef10d917bf1, type: 3}
-  - Description: 
+  - Description: spikes
     Visual: {fileID: 21300000, guid: 8a00a3ac0b801424ba3451cce55b2c51, type: 3}
-  - Description: 
+  - Description: tree branch
     Visual: {fileID: 21300000, guid: 21e6470f41462b04a9ac30bc7503827f, type: 3}
   HeadAccessoryPositions:
   - PositionIndex: 00000000010000000200000003000000
@@ -34,16 +34,16 @@ MonoBehaviour:
   - PositionIndex: 0100000002000000
   - PositionIndex: 02000000
   Bodies:
-  - Description: 
+  - Description: egg
     Body: {fileID: 4114198452282757636, guid: 0b7f9774659151142b77a821c93756ef, type: 3}
-  - Description: 
+  - Description: vase
     Body: {fileID: 4114198452282757636, guid: c2f4bcd2c5970c84daa3e5d14cd9e8fe, type: 3}
   Arms:
-  - Description: 
+  - Description: stumps
     Visual: {fileID: 21300000, guid: 3eb61c8d3899c094ea1215fa38e4518a, type: 3}
-  - Description: 
+  - Description: claw
     Visual: {fileID: 21300000, guid: 62dcca4b5415c024bb04c95deab7d7e8, type: 3}
-  - Description: 
+  - Description: tentacle
     Visual: {fileID: 21300000, guid: 4cb290e6591e83245aa4667f650dbec3, type: 3}
   ArmPositions:
   - PositionIndex: 0000000001000000
@@ -51,13 +51,13 @@ MonoBehaviour:
   - PositionIndex: 00000000010000000200000003000000
   - PositionIndex: 000000000100000002000000030000000400000005000000
   Eyes:
-  - Description: 
+  - Description: circular
     Visual: {fileID: 21300000, guid: 8adc427c80c02704198b9ed3fcfc6941, type: 3}
-  - Description: 
+  - Description: 'insect '
     Visual: {fileID: 21300000, guid: cef597b3dbeeaeb458bad1273b5807af, type: 3}
-  - Description: 
+  - Description: eyelashes
     Visual: {fileID: 21300000, guid: 3d6a0516e3dbbec41bee5b96e4c6a039, type: 3}
-  - Description: 
+  - Description: pebble
     Visual: {fileID: 21300000, guid: d329921e29cf1b64ab922d93824f4570, type: 3}
   EyePositions:
   - PositionIndex: 00000000010000000200000003000000040000000500000006000000
@@ -69,35 +69,41 @@ MonoBehaviour:
   - PositionIndex: 01000000020000000300000004000000
   - PositionIndex: 000000000500000006000000
   Patterns:
-  - Description: 
+  - Description: squiggles
     Pattern: {fileID: 2800000, guid: ea4f36f8d729b884ea43ff3de9b04c24, type: 3}
-  - Description: 
+  - Description: spotty
     Pattern: {fileID: 2800000, guid: 3b1b75c587412d94f8457949d7a6d1a6, type: 3}
-  - Description: 
+  - Description: sweaty
     Pattern: {fileID: 2800000, guid: b4119bd8949b0fa46aa5f29abc8709c2, type: 3}
-  - Description: 
+  - Description: crystal
     Pattern: {fileID: 2800000, guid: da40e62e0c2ca4c4da94011be2014643, type: 3}
-  - Description: 
+  - Description: stony
     Pattern: {fileID: 2800000, guid: 651ee97e3c96a8d48a75147bb134e1a2, type: 3}
   Colourings:
-  - Skin: {r: 0.3270737, g: 0.9245283, b: 0.6798988, a: 1}
+  - Description: ocean
+    Skin: {r: 0.3270737, g: 0.9245283, b: 0.6798988, a: 1}
     Pattern: {r: 0.19215687, g: 0.50980395, b: 0.5764706, a: 1}
-  - Skin: {r: 1, g: 0.7028302, b: 0.7847944, a: 1}
+  - Description: cutesy
+    Skin: {r: 1, g: 0.7028302, b: 0.7847944, a: 1}
     Pattern: {r: 0.6377923, g: 0.46057317, b: 0.8490566, a: 1}
-  - Skin: {r: 0.16278034, g: 0.3208529, b: 0.5849056, a: 1}
+  - Description: subdued
+    Skin: {r: 0.16278034, g: 0.3208529, b: 0.5849056, a: 1}
     Pattern: {r: 0.6531684, g: 0.7467349, b: 0.7735849, a: 1}
-  - Skin: {r: 0.62127995, g: 0.8679245, b: 0.38892844, a: 1}
+  - Description: nature
+    Skin: {r: 0.62127995, g: 0.8679245, b: 0.38892844, a: 1}
     Pattern: {r: 0.249644, g: 0.6226415, b: 0.46351847, a: 1}
-  - Skin: {r: 0.6132076, g: 0.25164652, b: 0.25164652, a: 1}
+  - Description: blood
+    Skin: {r: 0.6132076, g: 0.25164652, b: 0.25164652, a: 1}
     Pattern: {r: 0.24465743, g: 0.18142578, b: 0.254717, a: 1}
-  - Skin: {r: 1, g: 0.825405, b: 0.41037738, a: 1}
+  - Description: autumn
+    Skin: {r: 1, g: 0.825405, b: 0.41037738, a: 1}
     Pattern: {r: 0.745283, g: 0.34804708, b: 0.2917853, a: 1}
   Mouths:
-  - Description: 
+  - Description: happy
     Mouth: {fileID: 21300000, guid: a48f517dd7878bd4a89364c297230cbc, type: 3}
-  - Description: 
+  - Description: spiky teeth
     Mouth: {fileID: 21300000, guid: cd10c8efb35aae244925bee57f2fdbd5, type: 3}
-  - Description: 
+  - Description: big teeth
     Mouth: {fileID: 21300000, guid: fa7a4ef2c8434fd4daa6c1baeb58e5c1, type: 3}
-  - Description: 
+  - Description: red lips
     Mouth: {fileID: 21300000, guid: e1f7566e29edd524aa3493715b45e65a, type: 3}
