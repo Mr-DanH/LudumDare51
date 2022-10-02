@@ -16,6 +16,8 @@ public class Minigame : MonoBehaviour
         Strength
     }
 
+    public event System.Action<eMinigameEvent> onMinigameComplete;
+
     public virtual eType Type { get; }
 
     public List<MinigameProp> m_props;
@@ -46,7 +48,6 @@ public class Minigame : MonoBehaviour
 
     public void PropEvent(eMinigameEvent minigameEvent)
     {
-        if(m_alien != null)
-            m_alien.MinigameEvent(minigameEvent);
+        onMinigameComplete.Invoke(minigameEvent);
     }
 }
