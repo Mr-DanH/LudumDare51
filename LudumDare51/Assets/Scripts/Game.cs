@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class Game : MonoBehaviour
@@ -14,6 +15,11 @@ public class Game : MonoBehaviour
     const float ALIEN_ARRIVE_DELAY = 1;
     const float ALIEN_TIME = 10;
     const float ALIEN_LEAVE_DELAY = 1;
+
+    void Awake()
+    {
+        SceneManager.LoadScene("Screens", LoadSceneMode.Additive);
+    }
 
     IEnumerator Start()
     {

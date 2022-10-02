@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ChooseMatchesScreen : SingletonMonoBehaviour<ChooseMatchesScreen>
 {
-    public AlienManager m_alienManager;
     public Transform m_animatedChild;
     public Vector3 m_from;
 
@@ -29,7 +28,7 @@ public class ChooseMatchesScreen : SingletonMonoBehaviour<ChooseMatchesScreen>
         gameObject.SetActive(true);
 
         int toggleIndex = 0;
-        m_alienManager.ForEachAlien(
+        AlienManager.Instance.ForEachAlien(
             delegate(OngoingAlienData alien)
             {
                 Text text = m_toggles[toggleIndex++].GetComponentInChildren<Text>(); 
@@ -50,7 +49,7 @@ public class ChooseMatchesScreen : SingletonMonoBehaviour<ChooseMatchesScreen>
         gameObject.SetActive(false);
 
         int toggleIndex = 0;
-        m_alienManager.ForEachAlien(
+        AlienManager.Instance.ForEachAlien(
             delegate(OngoingAlienData alien)
             {
                 alien.PlayerRequestedMatch = m_toggles[toggleIndex++].isOn;
