@@ -10,12 +10,14 @@ public class ChooseMatchesScreen : SingletonMonoBehaviour<ChooseMatchesScreen>
 
     Vector3 m_startPos;
     Toggle[] m_toggles;
+    ScreenSwoosh m_screenSwoosh;
 
     public override void Awake()
     {
         base.Awake();
         m_startPos = m_animatedChild.localPosition;
         m_toggles = GetComponentsInChildren<Toggle>();
+        m_screenSwoosh = GetComponent<ScreenSwoosh>();
     }
 
     void Start()
@@ -35,13 +37,12 @@ public class ChooseMatchesScreen : SingletonMonoBehaviour<ChooseMatchesScreen>
                 text.text = alien.Data.Name;
             });
 
-        StartCoroutine(Animate(m_from, m_startPos, null));
-
+        m_screenSwoosh.AnimateOn();
     }
 
     public void Next()
     {
-        StartCoroutine(Animate(m_startPos, m_startPos + (m_startPos - m_from), ShowNextScreen));
+        m_screenSwoosh.AnimateOff(ShowNextScreen);
     }
 
     void ShowNextScreen()
@@ -54,22 +55,7 @@ public class ChooseMatchesScreen : SingletonMonoBehaviour<ChooseMatchesScreen>
             {
                 alien.PlayerRequestedMatch = m_toggles[toggleIndex++].isOn;
             });
-    }
 
-    IEnumerator Animate(Vector3 from, Vector3 to, System.Action callback)
-    {
-        float t = 0;
-        while(t < 1)
-        {
-            t += Time.deltaTime;
-            Vector3 pos = Vector3.Lerp(from, to, -Mathf.Cos(t * Mathf.PI));
-
-            m_animatedChild.localPosition = pos;
-            yield return null;
-        }
-
-        m_animatedChild.localPosition = to;
-
-        callback?.Invoke();
+        MatchResultsScreen.Instance.Show();
     }
 }
