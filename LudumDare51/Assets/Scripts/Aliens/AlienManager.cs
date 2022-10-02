@@ -12,7 +12,7 @@ public class AlienManager : SingletonMonoBehaviour<AlienManager>
     private List<OngoingAlienData> _alienData = new List<OngoingAlienData>();
     private OngoingAlienData _currentAlienDate;
 
-   public event System.Action onGeneratedAliens;
+    public event System.Action onGeneratedAliens;
 
     public int NumAliens { get { return numberAliens; } }
 
