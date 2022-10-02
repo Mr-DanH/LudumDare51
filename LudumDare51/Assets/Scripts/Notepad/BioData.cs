@@ -38,7 +38,7 @@ public class BioData
         Dislikes = "";
         foreach (var trait in traitData)
         {
-            if (trait.IsPositive)
+            if (trait.Polarity == AlienTraits.eTraitPolarity.LIKE)
             {
                 Likes += $"\n {trait.Description}";
             }

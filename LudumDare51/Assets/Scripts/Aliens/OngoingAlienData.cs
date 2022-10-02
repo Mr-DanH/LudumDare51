@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class OngoingAlienData
 {
@@ -25,25 +26,27 @@ public class OngoingAlienData
         _numDates++;
     }
 
+    List<eMinigameEvent> allDateEvents = new List<eMinigameEvent>();
+
     public void EventHappened(eMinigameEvent minigameEvent)
     {
-        AlienTraits.Trait foundTrait = Data.Traits.Find(x=>x.Events.Contains(minigameEvent));
-        if (foundTrait != null)
-        {
-            Debug.Log($"EventHappened {minigameEvent}, thoughts {foundTrait.Description}");
-            AdjustAttraction(foundTrait.IsPositive);
-            foundTrait.Complete();
-        }
+        allDateEvents.Add(minigameEvent);
     }
 
     public void DateEnded()
     {
-        List<AlienTraits.Trait> uncompletedTraits = Data.Traits.FindAll(x=>!x.IsCompleted && x.IsPositive);
-        foreach(var trait in uncompletedTraits)
-        {
-            Debug.Log($"Uncompleted Trait {trait.Description}. OH NO!");
-            AdjustAttraction(isPositive: false);
-        }
+        Data.Traits.ForEach(JudgeTraitPass);
+    }
+
+    private void JudgeTraitPass(AlienTraits.Trait trait)
+    {
+        var intersectedIncludedEvents = allDateEvents.Intersect(trait.IncludedEvents);
+        var intersectedOmittedEvents = allDateEvents.Intersect(trait.OmittedEvents);
+
+        bool hasIncludedAll = intersectedIncludedEvents.Count() == trait.IncludedEvents.Count();
+        bool hasOmmittedAll = intersectedOmittedEvents.Count() == trait.OmittedEvents.Count();
+
+        AdjustAttraction(hasIncludedAll && hasOmmittedAll);
     }
 
     private void AdjustAttraction(bool isPositive)

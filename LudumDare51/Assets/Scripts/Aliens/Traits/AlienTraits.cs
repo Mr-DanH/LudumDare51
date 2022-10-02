@@ -33,31 +33,34 @@ public class AlienTraits : ScriptableObject
     private Trait GenerateTraitFromList(List<TraitSetupData> traits)
     {
         TraitSetupData setup = traits.RandomElement<TraitSetupData>();
-        return new Trait(setup.Description, setup.MinigameEvents, setup.IsPositive);
+        return new Trait(setup);
     }
 
     [System.Serializable]
     public class Trait
     {
-        private string _description;
-        private List<eMinigameEvent> _events;
-        private bool _isPositive;
-
-        public string Description { get { return _description; } }
-        public List<eMinigameEvent> Events { get { return _events; } }
-        public bool IsPositive { get { return _isPositive; } }
+        public string Description { get; private set; }
+        public eTraitPolarity Polarity { get; private set;}
+        public List<eMinigameEvent> OmittedEvents { get; private set; }
+        public List<eMinigameEvent> IncludedEvents { get; private set; }
         public bool IsCompleted { get; private set; }
 
-        public Trait(string description, List<eMinigameEvent> events, bool isPositive)
+        public Trait(TraitSetupData data)
         {
-            _description = description;
-            _events = events;
-            _isPositive = isPositive;
+            Description = data.Description;
+            IncludedEvents = data.IncludeMinigameEvents;
+            OmittedEvents = data.OmitMinigameEvents;
+            Polarity = data.Polarity;
         }
 
         public void Complete()
         {
             IsCompleted = true;
+        }
+
+        public void SetPolarity(AlienTraits.eTraitPolarity polarity)
+        {
+            Polarity = polarity;
         }
     }
 
@@ -65,7 +68,14 @@ public class AlienTraits : ScriptableObject
     public class TraitSetupData
     {
         [SerializeField] public string Description;
-        [SerializeField] public bool IsPositive;
-        [SerializeField] public List<eMinigameEvent> MinigameEvents;
+        [SerializeField] public eTraitPolarity Polarity; 
+        [SerializeField] public List<eMinigameEvent> IncludeMinigameEvents;
+        [SerializeField] public List<eMinigameEvent> OmitMinigameEvents;
+    }
+
+    public enum eTraitPolarity
+    {
+        LIKE = 1,
+        DISLIKE = 2
     }
 }
