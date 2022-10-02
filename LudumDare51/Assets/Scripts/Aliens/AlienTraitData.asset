@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40033e28eb9342c45acad0fcc48142cc, type: 3}
+  m_Name: AlienTraitData
+  m_EditorClassIdentifier: 
+  _candleTraits:
+  - Description: Freaked out by wax
+    IsPositive: 1
+    MinigameEvents: 00000000
+  - Description: Pyromaniac
+    IsPositive: 0
+    MinigameEvents: 00000000
+  _flowerTraits:
+  - Description: Has hayfever
+    IsPositive: 1
+    MinigameEvents: 01000000
+  - Description: Flowers are delicious
+    IsPositive: 0
+    MinigameEvents: 01000000
+  _flyTraits:
+  - Description: Hates the buzzz
+    IsPositive: 1
+    MinigameEvents: 02000000
+  - Description: Emotional support animal
+    IsPositive: 0
+    MinigameEvents: 02000000
+  _drinkTraits:
+  - Description: 
+    IsPositive: 1
+    MinigameEvents: 0400000006000000
+  - Description: 
+    IsPositive: 1
+    MinigameEvents: 0500000007000000
+  - Description: 
+    IsPositive: 1
+    MinigameEvents: 05000000
+  _dialogueTraits:
+  - Description: Devils advocate
+    IsPositive: 1
+    MinigameEvents: 09000000
+  - Description: I'm always right
+    IsPositive: 1
+    MinigameEvents: 08000000
