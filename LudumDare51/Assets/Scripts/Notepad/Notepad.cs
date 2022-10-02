@@ -27,7 +27,6 @@ public class Notepad : MonoBehaviour
 
     public void UiToggleOpen()
     {
-        Debug.Log("Toggle Open!");
         _isOpen = !_isOpen;
         _openAnimator.SetBool("IsOpen", _isOpen);
         _notepadBlocker.SetActive(_isOpen);
@@ -35,7 +34,6 @@ public class Notepad : MonoBehaviour
 
     public void UiSelectBio(int index, bool selected)
     {
-        Debug.Log($"Selected a tab {index}, selected: {selected}");
         if (index < _bios.Count)
         {
             BioData bioData = _bios[index];

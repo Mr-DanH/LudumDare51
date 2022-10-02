@@ -19,3 +19,10 @@ public enum eMinigameEvent
     SpeechAgreed,
     SpeechDisagreed
 }
+
+public enum eEventEmotion
+{
+    Neutral,
+    Happy,
+    Sad,
+}

@@ -13,6 +13,7 @@ public class OngoingAlienData
     public int NumDates { get { return _numDates; } }
     public bool PlayerRequestedMatch { get; set; }
     public bool AlienRequestedMatch { get { return _attraction > 0; } }
+    private List<eMinigameEvent> _allDateEvents = new List<eMinigameEvent>();
 
     public OngoingAlienData(AlienData data)
     {
@@ -26,11 +27,36 @@ public class OngoingAlienData
         _numDates++;
     }
 
-    List<eMinigameEvent> allDateEvents = new List<eMinigameEvent>();
-
     public void EventHappened(eMinigameEvent minigameEvent)
     {
-        allDateEvents.Add(minigameEvent);
+        _allDateEvents.Add(minigameEvent);
+    }
+
+    public eEventEmotion GetEmotionAboutEvent(eMinigameEvent minigameEvent)
+    {
+        eEventEmotion emotion = eEventEmotion.Neutral;
+
+        foreach(var trait in Data.Traits)
+        {
+            bool isIncluded = trait.IncludedEvents.Contains(minigameEvent);
+            bool isOmitted = trait.OmittedEvents.Contains(minigameEvent);
+
+            if (isIncluded)
+            {
+                emotion = eEventEmotion.Happy;
+            }
+            else if (isOmitted)
+            {
+                emotion = eEventEmotion.Sad;
+            }
+
+            if (emotion != eEventEmotion.Neutral)
+            {
+                break;
+            }
+        }
+
+        return emotion;
     }
 
     public void DateEnded()
@@ -40,8 +66,8 @@ public class OngoingAlienData
 
     private void JudgeTraitPass(AlienTraits.Trait trait)
     {
-        var intersectedIncludedEvents = allDateEvents.Intersect(trait.IncludedEvents);
-        var intersectedOmittedEvents = allDateEvents.Intersect(trait.OmittedEvents);
+        var intersectedIncludedEvents = _allDateEvents.Intersect(trait.IncludedEvents);
+        var intersectedOmittedEvents = _allDateEvents.Intersect(trait.OmittedEvents);
 
         bool hasIncludedAll = intersectedIncludedEvents.Count() == trait.IncludedEvents.Count();
         bool hasOmmittedAll = intersectedOmittedEvents.Count() == trait.OmittedEvents.Count();

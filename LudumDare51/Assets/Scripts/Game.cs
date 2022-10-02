@@ -104,5 +104,7 @@ public class Game : SingletonMonoBehaviour<Game>
     private void MinigameComplete(eMinigameEvent minigameEvent)
     {
         _alienManager.OnMinigameComplete(minigameEvent);
+        eEventEmotion emotion = _currentAlien.GetEmotionAboutEvent(minigameEvent);
+        _alienObject.TriggerEmotionalResponse(emotion);
     }
 }

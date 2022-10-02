@@ -52,6 +52,14 @@ public class Alien : MonoBehaviour
         transform.rotation = Quaternion.identity;
     }
 
+    public void TriggerEmotionalResponse(eEventEmotion emotion)
+    {
+        if (emotion != eEventEmotion.Neutral)
+        {
+            StartCoroutine(_head.ShowEmotion(emotion));
+        }
+    }
+
     public void Enter()
     {
         StartCoroutine(Move(m_startPos - (Vector3.right * Screen.width * 0.75f), m_startPos));
@@ -124,10 +132,5 @@ public class Alien : MonoBehaviour
                 transform.rotation = Quaternion.identity;
                 break;
         }
-    }
-
-    public void MinigameEvent(eMinigameEvent minigameEvent)
-    {
-        Debug.Log(minigameEvent);
     }
 }
