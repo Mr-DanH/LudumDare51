@@ -52,7 +52,7 @@ public class Notepad : MonoBehaviour
 
     private void CleanupTabs()
     {
-        _tabs.ForEach(x=> Destroy(x));
+        _tabs.ForEach(x=> Destroy(x.gameObject));
         _tabs.Clear();
     }
 
