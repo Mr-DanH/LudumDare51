@@ -48,6 +48,6 @@ public class Minigame : MonoBehaviour
 
     public void PropEvent(eMinigameEvent minigameEvent)
     {
-        onMinigameComplete.Invoke(minigameEvent);
+        onMinigameComplete?.Invoke(minigameEvent);
     }
 }
