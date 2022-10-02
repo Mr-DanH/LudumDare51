@@ -12,8 +12,10 @@ public class Game : MonoBehaviour
 
     public List<Minigame> m_minigames = new List<Minigame>();
 
+    public Transform m_timerSegmentParent;
+
     const float ALIEN_ARRIVE_DELAY = 1;
-    const float ALIEN_TIME = 10;
+    const int ALIEN_TIME = 10;
     const float ALIEN_LEAVE_DELAY = 1;
 
     void Awake()
@@ -33,6 +35,9 @@ public class Game : MonoBehaviour
                 minigame.ResetMinigame();
                 minigame.onMinigameComplete += MinigameComplete;
             }
+
+            foreach(Transform child in m_timerSegmentParent)
+                child.gameObject.SetActive(false);
                 
             yield return new WaitForSeconds(ALIEN_ARRIVE_DELAY);
 
@@ -48,7 +53,11 @@ public class Game : MonoBehaviour
             foreach(var minigame in m_minigames)
                 minigame.AlienArrived(_alienObject, _currentAlien);
 
-            yield return new WaitForSeconds(ALIEN_TIME);
+            for (int j = 0; j < ALIEN_TIME; ++j)
+            {
+                yield return new WaitForSeconds(1);
+                m_timerSegmentParent.GetChild(j).gameObject.SetActive(true);
+            }
 
             Debug.Log($"Alien {i} leave");
 
