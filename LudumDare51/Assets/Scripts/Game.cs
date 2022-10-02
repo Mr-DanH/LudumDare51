@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Game : MonoBehaviour
 {   
@@ -22,7 +23,10 @@ public class Game : MonoBehaviour
         {
             //Reset table
             foreach(var minigame in m_minigames)
+            {
                 minigame.ResetMinigame();
+                minigame.onMinigameComplete += MinigameComplete;
+            }
                 
             yield return new WaitForSeconds(ALIEN_ARRIVE_DELAY);
 
@@ -51,11 +55,19 @@ public class Game : MonoBehaviour
             _alienObject.gameObject.SetActive(false);
             
             foreach(var minigame in m_minigames)
+            {
                 minigame.AlienLeave();
+                minigame.onMinigameComplete -= MinigameComplete;
+            }
             
             yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
         }
 
         ChooseMatchesScreen.Instance.Show();
+    }
+
+    private void MinigameComplete(eMinigameEvent minigameEvent)
+    {
+        _alienManager.OnMinigameComplete(minigameEvent);
     }
 }
