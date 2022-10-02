@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     public DrinkMinigame m_minigame;
     public Vector3 m_largePosition;
 
-    public Transform m_highlight;
+    public Image m_highlight;
 
     Vector3 m_startPosition;
 
@@ -70,6 +71,9 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
         m_highlight.gameObject.SetActive(selectedDrink != null);
 
         if(selectedDrink != null)
+        {
             m_highlight.transform.position = selectedDrink.transform.position;
+            m_highlight.sprite = selectedDrink.m_sprite;
+        }
     }
 }
