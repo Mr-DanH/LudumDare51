@@ -21,9 +21,9 @@ public class AlienNameGenerator : MonoBehaviour
 
         m_excludedSecondIndices.Clear();
         m_excludedThirdIndices.Clear();
-        for (int i = 0; i < MIDDLE.Length; ++i)
+        for (int i = 0; i < PREFIXES.Length; ++i)
             m_excludedSecondIndices.Add(new List<int>());
-        for (int i = 0; i < POSTFIXES.Length; ++i)
+        for (int i = 0; i < MIDDLE.Length; ++i)
             m_excludedThirdIndices.Add(new List<int>());
     }
 
