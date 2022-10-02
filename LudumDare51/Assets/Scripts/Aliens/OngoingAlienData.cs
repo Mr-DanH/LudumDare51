@@ -70,7 +70,7 @@ public class OngoingAlienData
         var intersectedOmittedEvents = _allDateEvents.Intersect(trait.OmittedEvents);
 
         bool hasIncludedAll = intersectedIncludedEvents.Count() == trait.IncludedEvents.Count();
-        bool hasOmmittedAll = intersectedOmittedEvents.Count() == trait.OmittedEvents.Count();
+        bool hasOmmittedAll = intersectedOmittedEvents.Count() <= trait.OmittedEvents.Count();
 
         AdjustAttraction(hasIncludedAll && hasOmmittedAll);
     }
