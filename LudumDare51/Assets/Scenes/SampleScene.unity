@@ -1359,6 +1359,7 @@ MonoBehaviour:
   - {fileID: 864359803}
   - {fileID: 603417365}
   - {fileID: 1376585936}
+  m_timerSegmentParent: {fileID: 1858951055}
 --- !u!1 &454427674
 GameObject:
   m_ObjectHideFlags: 0
@@ -5471,6 +5472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_table: {fileID: 0}
+--- !u!224 &1858951055 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8552878315542822165, guid: e2051a3856a52904db89a6927e27ad8d, type: 3}
+  m_PrefabInstance: {fileID: 1902771769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1902771769
 PrefabInstance:
   m_ObjectHideFlags: 0
