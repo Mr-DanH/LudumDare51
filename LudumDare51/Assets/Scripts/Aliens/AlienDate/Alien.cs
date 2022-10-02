@@ -47,6 +47,9 @@ public class Alien : MonoBehaviour
         _head.Setup(visualData);
 
         m_moveType = (eMoveType)Random.Range(0, System.Enum.GetValues(typeof(eMoveType)).Length);
+        
+        transform.localScale = Vector3.one;
+        transform.rotation = Quaternion.identity;
     }
 
     public void Enter()
