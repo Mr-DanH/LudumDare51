@@ -25,6 +25,7 @@ public class TitleScreen : SingletonMonoBehaviour<TitleScreen>
 
     public void StartGame()
     {
+        AlienManager.Instance.ResetAliens();
         m_screenSwoosh.AnimateOff(StartGameCallback);
     }
 

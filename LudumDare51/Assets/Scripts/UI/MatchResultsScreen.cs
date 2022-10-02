@@ -55,6 +55,11 @@ public class MatchResultsScreen : SingletonMonoBehaviour<MatchResultsScreen>
 
     public void Next()
     {
-        m_screenSwoosh.AnimateOff(null);
+        m_screenSwoosh.AnimateOff(NextCallback);
+    }
+
+    void NextCallback()
+    {
+        TitleScreen.Instance.Show();
     }
 }
