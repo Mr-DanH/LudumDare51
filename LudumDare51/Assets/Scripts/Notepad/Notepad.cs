@@ -9,6 +9,7 @@ public class Notepad : MonoBehaviour
     [SerializeField] private Toggle _tabTemplate;
     [SerializeField] private ToggleGroup _tabParent;
     [SerializeField] private Animator _openAnimator;
+    [SerializeField] private GameObject _notepadBlocker;
 
 
     private List<Toggle> _tabs = new List<Toggle>();
@@ -29,7 +30,7 @@ public class Notepad : MonoBehaviour
         Debug.Log("Toggle Open!");
         _isOpen = !_isOpen;
         _openAnimator.SetBool("IsOpen", _isOpen);
-
+        _notepadBlocker.SetActive(_isOpen);
     }
 
     public void UiSelectBio(int index, bool selected)
