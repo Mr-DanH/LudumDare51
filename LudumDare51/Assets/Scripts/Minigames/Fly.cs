@@ -7,6 +7,11 @@ public class Fly : MinigameProp, IPointerDownHandler
 {
     public FlyMinigame m_minigame;
 
+    public override void ResetState()
+    {
+        return;
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         gameObject.SetActive(false);
