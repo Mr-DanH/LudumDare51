@@ -44,13 +44,10 @@ public class Notepad : MonoBehaviour
 
     private void ResetBios()
     {
+        CleanupTabs();
         _bios.Clear();
         List<AlienData> aliens = AlienManager.Instance.GetAlienData();
         aliens.ForEach(GenerateBio);
-
-        CleanupTabs();
-        GenerateTabs(aliens.Count);
-
     }
 
     private void CleanupTabs()
@@ -63,17 +60,17 @@ public class Notepad : MonoBehaviour
     {
         BioData bio = new BioData(alien);
         _bios.Add(bio);
+        GenerateTab(_bios.Count-1, alien.Visuals.Colouring.SkinColour);
     }
 
-    private void GenerateTabs(int numAliens)
+    private void GenerateTab(int index, Color mainColour)
     {
-        for (int i = 0; i < numAliens; i++)
-        {
-            Toggle tabClone = Instantiate(_tabTemplate, _tabParent.transform);
-            tabClone.group = _tabParent;
-            int index = i;
-            tabClone.onValueChanged.AddListener( x=> UiSelectBio(index, x));
-            _tabs.Add(tabClone);
-        }
+        Toggle tabClone = Instantiate(_tabTemplate, _tabParent.transform);
+        tabClone.group = _tabParent;
+        tabClone.onValueChanged.AddListener( x=> UiSelectBio(index, x));
+        ColorBlock colours = tabClone.colors;
+        colours.normalColor = mainColour;
+        tabClone.colors = colours;
+        _tabs.Add(tabClone);
     }
 }
