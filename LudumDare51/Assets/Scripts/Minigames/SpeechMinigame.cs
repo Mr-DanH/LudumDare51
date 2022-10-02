@@ -6,6 +6,7 @@ public class SpeechMinigame : Minigame
 {
     public override eType Type { get { return eType.Speech; } }
 
+    public GameObject m_speechbutton;
     public GameObject m_leftAlienSpeech;
     public GameObject m_rightAlienSpeech;
 
@@ -25,35 +26,41 @@ public class SpeechMinigame : Minigame
 
     eState m_dragState;
 
-    public override void ResetMinigame()
-    {
-        base.ResetMinigame();
+    // public override void ResetMinigame()
+    // {
+    //     base.ResetMinigame();
 
-        m_leftAlienSpeech.SetActive(false);
-        m_rightAlienSpeech.SetActive(false);
-        m_leftPlayerSpeech.gameObject.SetActive(false);
-        m_rightPlayerSpeech.gameObject.SetActive(false);
-    }
+    //     m_speechbutton.SetActive(false);
+    //     m_leftAlienSpeech.SetActive(false);
+    //     m_rightAlienSpeech.SetActive(false);
+    //     m_leftPlayerSpeech.gameObject.SetActive(false);
+    //     m_rightPlayerSpeech.gameObject.SetActive(false);
+    // }
     
     public override void AlienArrived(Alien alien)
     {
-        base.AlienArrived(alien);
+        base.AlienArrived(alien);        
 
         m_time = Time.time + 2;
         m_state = eState.Waiting;
-
     }
 
     public override void AlienLeave()
     {     
         base.AlienLeave();
 
+        HideEverything();
+        
+        m_state = eState.Off;
+    }
+
+    void HideEverything()
+    {
+        m_speechbutton.SetActive(false);
         m_leftAlienSpeech.SetActive(false);
         m_rightAlienSpeech.SetActive(false);
         m_leftPlayerSpeech.gameObject.SetActive(false);
         m_rightPlayerSpeech.gameObject.SetActive(false);
-        
-        m_state = eState.Off;
     }
 
     void Update()
@@ -65,17 +72,14 @@ public class SpeechMinigame : Minigame
                 m_time = float.MaxValue;
                 m_state = (Random.value > 0.5f) ? eState.Left : eState.Right;
 
+                m_speechbutton.SetActive(true);
                 m_leftAlienSpeech.SetActive(m_state == eState.Left);
                 m_rightAlienSpeech.SetActive(m_state == eState.Right);
             }
             else
             {
-                m_leftAlienSpeech.SetActive(false);
-                m_rightAlienSpeech.SetActive(false);
-                m_leftPlayerSpeech.gameObject.SetActive(false);
-                m_rightPlayerSpeech.gameObject.SetActive(false);
+                HideEverything();
             }
-
         }
     }
 
