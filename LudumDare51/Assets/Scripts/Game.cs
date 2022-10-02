@@ -51,6 +51,12 @@ public class Game : MonoBehaviour
             yield return new WaitForSeconds(ALIEN_TIME);
 
             Debug.Log($"Alien {i} leave");
+
+            foreach(var minigame in m_minigames)
+            {
+                minigame.AlienLeave();
+                minigame.onMinigameComplete -= MinigameComplete;
+            }
             
             _alienObject.Exit();
 
@@ -60,11 +66,7 @@ public class Game : MonoBehaviour
             //Alien leaves (fail if still active)
             _alienObject.gameObject.SetActive(false);
             
-            foreach(var minigame in m_minigames)
-            {
-                minigame.AlienLeave();
-                minigame.onMinigameComplete -= MinigameComplete;
-            }
+
             
             yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
         }

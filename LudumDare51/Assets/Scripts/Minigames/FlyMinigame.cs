@@ -6,12 +6,14 @@ public class FlyMinigame : Minigame
 {
     public override eType Type { get { return eType.Fly; } }
 
-    public Transform m_fly;
+    public Fly m_fly;
 
     public float m_horizontalSpeed = 100;
     public float m_vertSpeed = 25;
 
-    float m_speed;
+    Vector2 m_velocity;
+    bool m_isLooping;
+    int m_lastSizeRoll = 2;
 
     public override void ResetMinigame()
     {
@@ -22,15 +24,50 @@ public class FlyMinigame : Minigame
     {
         base.AlienArrived(alien);
 
-        m_fly.gameObject.SetActive(true);
+        if(m_fly.gameObject.activeSelf)
+            return;
 
-        m_speed = m_horizontalSpeed * Random.Range(0.75f, 1.25f);
-        if(Random.value > 0.5f)
+        m_fly.gameObject.SetActive(true);
+        m_fly.transform.localPosition = m_fly.StartPos;
+
+        RandomiseSpeedScale(Random.value > 0.5f);
+
+        if(m_velocity.x < 0)
         {
-            m_speed *= -1;
             Vector3 pos = m_fly.transform.localPosition;
             pos.x *= -1;
             m_fly.transform.localPosition = pos;        
+        }
+
+        m_isLooping = true;
+    }
+
+    void RandomiseSpeedScale(bool goLeft)
+    {
+        m_velocity.x = m_horizontalSpeed;
+        m_velocity.y = m_vertSpeed;
+
+        if(goLeft)
+            m_velocity.x *= -1;
+
+        int roll = Random.Range(0,2);
+        if(roll >= m_lastSizeRoll)
+            ++roll;
+        m_lastSizeRoll = roll;
+
+        switch(roll)
+        {
+            case 0:
+                m_fly.transform.localScale = Vector3.one * 0.5f;
+                m_velocity *= 0.5f;
+                break;
+            case 1:
+                m_fly.transform.localScale = Vector3.one;
+                break;
+            case 2:
+                m_fly.transform.localScale = Vector3.one * 2f;
+                m_velocity *= 2;
+                break;
         }
     }
 
@@ -41,7 +78,34 @@ public class FlyMinigame : Minigame
 
     void Update()
     {
-        if(m_fly.gameObject.activeSelf)
-            m_fly.transform.position += new Vector3(m_speed, Mathf.Cos(Time.time * Mathf.PI) * m_vertSpeed) * Time.deltaTime;
+        if(!m_fly.gameObject.activeSelf)
+            return;
+
+        Vector3 flyPos = m_fly.transform.position;
+        flyPos += new Vector3(m_velocity.x, Mathf.Cos(Time.time * Mathf.PI) * m_velocity.y) * Time.deltaTime;
+
+        if(m_isLooping)
+        {
+            flyPos += new Vector3(m_velocity.x * 2 * Mathf.Cos((Time.time + 0.5f) * Mathf.PI), 0, 0) * Time.deltaTime;
+        }
+
+        m_fly.transform.position = flyPos;
+
+        Rect rect = m_fly.GetWorldRect();
+        Rect canvasRect = m_fly.GetCanvasRect();
+        float canvasWidth = canvasRect.width;
+        canvasRect.xMin -= canvasWidth * 0.1f;
+        canvasRect.xMax += canvasWidth * 0.1f;
+
+        if(m_velocity.x > 0)
+        {
+            if(rect.xMin > canvasRect.xMax)
+                RandomiseSpeedScale(true);
+        }
+        else
+        {
+            if(rect.xMax < canvasRect.xMin )
+                RandomiseSpeedScale(false);
+        }
     }
 }

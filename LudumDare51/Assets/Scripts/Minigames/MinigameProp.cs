@@ -16,6 +16,8 @@ public class MinigameProp : MonoBehaviour
     
     const float GRAVITY = 2000;
 
+    public Vector3 StartPos { get { return m_pos; } }
+
     public virtual void StoreState()
     {
         m_pos = transform.localPosition;
@@ -45,14 +47,26 @@ public class MinigameProp : MonoBehaviour
         m_velocity = velocity;
         m_falling = true;
     }
+
+    public Rect GetWorldRect()
+    {
+        RectTransform rectTransform = (RectTransform)transform;
+        Rect rect = rectTransform.rect;            
+        rect.position += (Vector2)rectTransform.position;
+        return rect;
+    }
+
+    public Rect GetCanvasRect()
+    {
+        Canvas canvas = GetComponentInParent<Canvas>();
+        return canvas.pixelRect;
+    }
     
     public virtual void Update()
     {
         if (m_falling)
         {       
-            RectTransform rectTransform = (RectTransform)transform;
-            Rect rect = rectTransform.rect;            
-            rect.position += (Vector2)rectTransform.position;
+            Rect rect = GetWorldRect();
 
             if(m_table != null)
             {
@@ -69,8 +83,8 @@ public class MinigameProp : MonoBehaviour
             m_velocity.y -= GRAVITY * Time.deltaTime;
             transform.position += m_velocity * Time.deltaTime;
             
-            Canvas canvas = GetComponentInParent<Canvas>();
-            if(rect.yMax < canvas.pixelRect.yMin || rect.xMax < canvas.pixelRect.xMin || rect.xMin > canvas.pixelRect.xMax)
+            Rect canvasRect = GetCanvasRect();
+            if(rect.yMax < canvasRect.yMin || rect.xMax < canvasRect.xMin || rect.xMin > canvasRect.xMax)
             {
                 gameObject.SetActive(false);
                 LeavePlayArea();
