@@ -12,11 +12,13 @@ public class MinigameProp : MonoBehaviour
     bool m_active;
     
     Vector3 m_velocity;
+    Vector3 m_angularVelocity;
     protected bool m_falling;
     
     const float GRAVITY = 2000;
 
     public Vector3 StartPos { get { return m_pos; } }
+    public bool IsFalling { get { return m_falling; } }
 
     public virtual void StoreState()
     {
@@ -44,7 +46,12 @@ public class MinigameProp : MonoBehaviour
 
     public void Throw(Vector3 velocity)
     {
+        Throw(velocity, Vector3.zero);
+    }
+    public void Throw(Vector3 velocity, Vector3 angularVelocity)
+    {
         m_velocity = velocity;
+        m_angularVelocity = angularVelocity;
         m_falling = true;
     }
 
@@ -82,10 +89,12 @@ public class MinigameProp : MonoBehaviour
 
             m_velocity.y -= GRAVITY * Time.deltaTime;
             transform.position += m_velocity * Time.deltaTime;
+            transform.rotation *= Quaternion.AngleAxis(m_angularVelocity.magnitude * Time.deltaTime, m_angularVelocity);
             
             Rect canvasRect = GetCanvasRect();
             if(rect.yMax < canvasRect.yMin || rect.xMax < canvasRect.xMin || rect.xMin > canvasRect.xMax)
             {
+                m_falling = false;
                 gameObject.SetActive(false);
                 LeavePlayArea();
             }
