@@ -21,6 +21,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
     Drink[] m_drinks;
 
     Drink m_selected;
+    bool m_drinkOrdered;
 
     void Awake()
     {
@@ -33,23 +34,32 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
     public override void ResetState()
     {
         base.ResetState();
+        m_highlight.gameObject.SetActive(false);
         m_targetSize = m_startSize;
         m_targetPosition = m_startPosition;
         m_lerpTime = 1;
+        m_drinkOrdered = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if(m_drinkOrdered)
+            return;
+
         StartLerp(Vector3.one, m_largePosition);
         m_selected = null;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if(m_drinkOrdered)
+            return;
+
         StartLerp(m_startSize, m_startPosition);
 
         if(m_selected != null)
         {
+            m_drinkOrdered = true;
             m_minigame.OrderDrink(m_selected);
             m_minigame.PropEvent(m_selected.m_event);
         }
@@ -75,6 +85,9 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(m_drinkOrdered)
+            return;
+
         m_selected = (eventData.pointerEnter != null) ? eventData.pointerEnter.GetComponentInParent<Drink>() : null;
 
         SelectDrink(m_selected);
