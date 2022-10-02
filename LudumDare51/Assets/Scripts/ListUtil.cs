@@ -20,7 +20,7 @@ public static class ListUtil
         if (subList.Count == 0)
             return default(T);
 
-        return list[Random.Range(0, list.Count)];
+        return subList[Random.Range(0, subList.Count)];
     }
 
     static System.Random _random = new System.Random();
