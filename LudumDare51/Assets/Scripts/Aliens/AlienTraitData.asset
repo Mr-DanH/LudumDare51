@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: AlienTraitData
   m_EditorClassIdentifier: 
   _candleTraits:
-  - Description: Freaked out by wax
+  - Description: Long tapered Candles
     Polarity: 2
     IncludeMinigameEvents: 00000000
     OmitMinigameEvents: 
-  - Description: Pyromaniac
+  - Description: Fire, maybe too much...
     Polarity: 1
     IncludeMinigameEvents: 
     OmitMinigameEvents: 00000000
   _flowerTraits:
-  - Description: Has hayfever
+  - Description: Space Flower Pollen
     Polarity: 2
     IncludeMinigameEvents: 01000000
     OmitMinigameEvents: 
@@ -35,16 +35,16 @@ MonoBehaviour:
     Polarity: 2
     IncludeMinigameEvents: 02000000
     OmitMinigameEvents: 
-  - Description: Emotional support animal
+  - Description: Emotional support fly
     Polarity: 1
     IncludeMinigameEvents: 
     OmitMinigameEvents: 02000000
   _strengthTraits:
-  - Description: SMASSSSHHH
+  - Description: ICE SMASH!
     Polarity: 1
     IncludeMinigameEvents: 03000000
     OmitMinigameEvents: 
-  - Description: Pacifist
+  - Description: Watching ICE melt
     Polarity: 1
     IncludeMinigameEvents: 
     OmitMinigameEvents: 03000000
@@ -55,7 +55,7 @@ MonoBehaviour:
     OmitMinigameEvents: 
   - Description: Coffee
     Polarity: 2
-    IncludeMinigameEvents: 
+    IncludeMinigameEvents: 040000000600000007000000
     OmitMinigameEvents: 05000000
   - Description: Milkshakes
     Polarity: 1
@@ -63,7 +63,7 @@ MonoBehaviour:
     OmitMinigameEvents: 
   - Description: Milkshakes
     Polarity: 2
-    IncludeMinigameEvents: 
+    IncludeMinigameEvents: 040000000500000006000000
     OmitMinigameEvents: 07000000
   - Description: Galatic wine
     Polarity: 1
@@ -71,7 +71,7 @@ MonoBehaviour:
     OmitMinigameEvents: 
   - Description: Galatic wine
     Polarity: 2
-    IncludeMinigameEvents: 
+    IncludeMinigameEvents: 040000000500000007000000
     OmitMinigameEvents: 06000000
   - Description: Beer
     Polarity: 1
@@ -79,22 +79,22 @@ MonoBehaviour:
     OmitMinigameEvents: 
   - Description: Beer
     Polarity: 2
-    IncludeMinigameEvents: 
+    IncludeMinigameEvents: 050000000600000007000000
     OmitMinigameEvents: 04000000
   _dialogueTraits:
-  - Description: Devils advocate
+  - Description: Being challenged
     Polarity: 1
     IncludeMinigameEvents: 09000000
     OmitMinigameEvents: 08000000
-  - Description: Devils advocate
+  - Description: Disagreements
     Polarity: 2
     IncludeMinigameEvents: 08000000
     OmitMinigameEvents: 09000000
-  - Description: I'm always right
+  - Description: Compliments
     Polarity: 1
     IncludeMinigameEvents: 08000000
     OmitMinigameEvents: 09000000
-  - Description: I'm always right
+  - Description: Suck ups
     Polarity: 2
     IncludeMinigameEvents: 09000000
     OmitMinigameEvents: 08000000

@@ -20,12 +20,14 @@ public class AlienTraits : ScriptableObject
         generatedTraits.Add(GenerateTraitFromList(_flowerTraits));
         generatedTraits.Add(GenerateTraitFromList(_flyTraits));
         generatedTraits.Add(GenerateTraitFromList(_strengthTraits));
-        generatedTraits.Add(GenerateTraitFromList(_drinkTraits));
         generatedTraits.Add(GenerateTraitFromList(_dialogueTraits));
 
         generatedTraits.Shuffle<Trait>();
 
         generatedTraits.RemoveRange(num-1, generatedTraits.Count-num);
+
+        generatedTraits.Add(GenerateTraitFromList(_drinkTraits));
+        generatedTraits.Shuffle<Trait>();
 
         return generatedTraits;
     }

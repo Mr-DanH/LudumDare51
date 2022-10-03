@@ -61,23 +61,17 @@ public class OngoingAlienData
 
     public void DateEnded()
     {
-        Data.Traits.ForEach(JudgeTraitPass);
+        _allDateEvents.ForEach(JudgeEvents);
     }
 
-    private void JudgeTraitPass(AlienTraits.Trait trait)
+    private void JudgeEvents(eMinigameEvent minigameEvent)
     {
-        var intersectedIncludedEvents = _allDateEvents.Intersect(trait.IncludedEvents);
-        var intersectedOmittedEvents = _allDateEvents.Intersect(trait.OmittedEvents);
-
-        bool hasIncludedAll = intersectedIncludedEvents.Count() == trait.IncludedEvents.Count();
-        bool hasOmmittedAll = intersectedOmittedEvents.Count() <= trait.OmittedEvents.Count();
-
-        AdjustAttraction(hasIncludedAll && hasOmmittedAll);
+       AdjustAttraction(GetEmotionAboutEvent(minigameEvent));
     }
 
-    private void AdjustAttraction(bool isPositive)
+    private void AdjustAttraction(eEventEmotion emotion)
     {
-        _attraction += isPositive ? 1 : -100;
+        _attraction += emotion == eEventEmotion.Happy ? 1 : -100;
     }
 
 }
