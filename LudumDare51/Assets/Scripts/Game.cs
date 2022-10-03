@@ -14,6 +14,7 @@ public class Game : SingletonMonoBehaviour<Game>
     public List<Minigame> m_minigames = new List<Minigame>();
 
     public Transform m_timerSegmentParent;
+    public Transform m_progressParent;
 
     public Image m_drinkImage;
 
@@ -32,6 +33,9 @@ public class Game : SingletonMonoBehaviour<Game>
         foreach(Transform child in m_timerSegmentParent)
             child.gameObject.SetActive(false);
 
+        foreach(Transform child in m_progressParent)
+            child.gameObject.SetActive(false);
+
         foreach(var minigame in m_minigames)
         {
             minigame.ResetMinigame();
@@ -46,6 +50,9 @@ public class Game : SingletonMonoBehaviour<Game>
     IEnumerator StartGameCo()
     {
         _alienObject.gameObject.SetActive(false);
+        
+        foreach(Transform child in m_progressParent)
+            child.gameObject.SetActive(false);
 
         for (int i = 0; i < _alienManager.NumAliens; ++i)
         {
@@ -81,6 +88,8 @@ public class Game : SingletonMonoBehaviour<Game>
             }
 
             Debug.Log($"Alien {i} leave");
+
+            m_progressParent.GetChild(i).gameObject.SetActive(true);
 
             _alienObject.Exit(m_drinkImage.gameObject.activeInHierarchy ? m_drinkImage.sprite : null);
 
