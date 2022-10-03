@@ -56,20 +56,23 @@ public class FlyMinigame : Minigame
             ++roll;
         m_lastSizeRoll = roll;
 
+        Vector3 flyScale = new Vector3(Mathf.Sign(m_velocity.x), 1, 1);
+
         switch(roll)
         {
             case 0:
-                m_fly.transform.localScale = Vector3.one * 0.5f;
+                flyScale *= 0.5f;
                 m_velocity *= 0.5f;
                 break;
             case 1:
-                m_fly.transform.localScale = Vector3.one;
                 break;
             case 2:
-                m_fly.transform.localScale = Vector3.one * 2f;
+                flyScale *= 2f;
                 m_velocity *= 2;
                 break;
         }
+
+        m_fly.transform.localScale = flyScale;
     }
 
     public override void AlienLeave()
