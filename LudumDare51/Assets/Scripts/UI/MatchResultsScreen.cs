@@ -45,7 +45,7 @@ public class MatchResultsScreen : SingletonMonoBehaviour<MatchResultsScreen>
         AlienManager.Instance.ForEachAlien(
             delegate(OngoingAlienData alien)
             {
-                if(alien.AlienRequestedMatch && alien.PlayerRequestedMatch)
+                if(alien.AlienRequestedMatch)
                 {
                     Transform matchEntry = m_matchParent.GetChild(numMatches);
                     matchEntry.gameObject.SetActive(true);
