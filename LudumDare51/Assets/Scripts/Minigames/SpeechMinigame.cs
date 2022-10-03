@@ -87,13 +87,23 @@ public class SpeechMinigame : Minigame
                 if(statementIndex >= m_lastStatementIndex)
                     ++statementIndex;
                 m_lastStatementIndex = statementIndex;
-                text.text = STATEMENTS[statementIndex];
+
+                StartCoroutine(RevealText(text, STATEMENTS[statementIndex]));
             }
             else
             {
                 HideEverything();
             }
         }
+    }
+
+    IEnumerator RevealText(Text text, string statement)
+    {
+        for(int i = 0; i < statement.Length; ++i)
+        {
+            text.text = statement.Substring(0, i + 1);
+            yield return new WaitForSeconds(0.05f);
+        }        
     }
 
     public void OnPress()
