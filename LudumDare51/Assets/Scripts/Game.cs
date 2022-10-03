@@ -107,9 +107,13 @@ public class Game : SingletonMonoBehaviour<Game>
             //Alien leaves (fail if still active)
             _alienObject.gameObject.SetActive(false);
             
-
+            for (int j = ALIEN_TIME - 1; j >= 0; --j)
+            {
+                m_timerSegmentParent.GetChild(j).gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.1f);
+            }
             
-            yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
+            //yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
         }
 
         MatchResultsScreen.Instance.Show();
