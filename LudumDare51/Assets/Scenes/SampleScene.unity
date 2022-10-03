@@ -563,7 +563,7 @@ MonoBehaviour:
   visualsData: {fileID: 11400000, guid: 7b55c7a1bd8981a40a1f3e4fb4a385df, type: 2}
   alienTraits: {fileID: 11400000, guid: 4ddf7334d6c5a2e499596d70d65047a7, type: 2}
   numberAliens: 10
-  numRangeTraits: {x: 2, y: 4}
+  numRangeTraits: {x: 1, y: 3}
 --- !u!4 &115704211
 Transform:
   m_ObjectHideFlags: 0
@@ -6672,9 +6672,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 540191590}
     m_Modifications:
+    - target: {fileID: 1263661369883115528, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 25.00003
+      objectReference: {fileID: 0}
     - target: {fileID: 1495487629525409923, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
       propertyPath: m_Name
       value: Notepad
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495487629525409923, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874696643302981047, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368700767300618113, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093642005387888363, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 3799693527570243385, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
       propertyPath: m_Pivot.x
@@ -6706,7 +6726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799693527570243385, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 439.79
       objectReference: {fileID: 0}
     - target: {fileID: 3799693527570243385, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6742,11 +6762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799693527570243385, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: -650
       objectReference: {fileID: 0}
     - target: {fileID: 3799693527570243385, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -200
+      value: -440
       objectReference: {fileID: 0}
     - target: {fileID: 3799693527570243385, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6764,6 +6784,14 @@ PrefabInstance:
       propertyPath: _notepadBlocker
       value: 
       objectReference: {fileID: 1133485905}
+    - target: {fileID: 5626472412814110987, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213858249626538399, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 25.00003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a8e1e5b88192c4428f83917677899fb, type: 3}
 --- !u!224 &2139533961 stripped

@@ -22,6 +22,8 @@ public class Game : SingletonMonoBehaviour<Game>
     const int ALIEN_TIME = 10;
     const float ALIEN_LEAVE_DELAY = 1;
 
+    public event System.Action onGameFinished;
+
     public override void Awake()
     {
         base.Awake();
@@ -111,6 +113,8 @@ public class Game : SingletonMonoBehaviour<Game>
         }
 
         MatchResultsScreen.Instance.Show();
+        onGameFinished.Invoke();
+
     }
 
     private void MinigameComplete(eMinigameEvent minigameEvent)
