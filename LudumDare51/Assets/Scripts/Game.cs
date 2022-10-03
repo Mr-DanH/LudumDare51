@@ -14,12 +14,15 @@ public class Game : SingletonMonoBehaviour<Game>
     public List<Minigame> m_minigames = new List<Minigame>();
 
     public Transform m_timerSegmentParent;
+    public Transform m_progressParent;
 
     public Image m_drinkImage;
 
     const float ALIEN_ARRIVE_DELAY = 1;
     const int ALIEN_TIME = 10;
     const float ALIEN_LEAVE_DELAY = 1;
+
+    public event System.Action onGameFinished;
 
     public override void Awake()
     {
@@ -30,6 +33,9 @@ public class Game : SingletonMonoBehaviour<Game>
     void Start()
     {
         foreach(Transform child in m_timerSegmentParent)
+            child.gameObject.SetActive(false);
+
+        foreach(Transform child in m_progressParent)
             child.gameObject.SetActive(false);
 
         foreach(var minigame in m_minigames)
@@ -46,6 +52,9 @@ public class Game : SingletonMonoBehaviour<Game>
     IEnumerator StartGameCo()
     {
         _alienObject.gameObject.SetActive(false);
+        
+        foreach(Transform child in m_progressParent)
+            child.gameObject.SetActive(false);
 
         for (int i = 0; i < _alienManager.NumAliens; ++i)
         {
@@ -82,6 +91,8 @@ public class Game : SingletonMonoBehaviour<Game>
 
             Debug.Log($"Alien {i} leave");
 
+            m_progressParent.GetChild(i).gameObject.SetActive(true);
+
             _alienObject.Exit(m_drinkImage.gameObject.activeInHierarchy ? m_drinkImage.sprite : null);
 
             foreach(var minigame in m_minigames)
@@ -96,12 +107,18 @@ public class Game : SingletonMonoBehaviour<Game>
             //Alien leaves (fail if still active)
             _alienObject.gameObject.SetActive(false);
             
-
+            for (int j = ALIEN_TIME - 1; j >= 0; --j)
+            {
+                m_timerSegmentParent.GetChild(j).gameObject.SetActive(false);
+                yield return new WaitForSeconds(0.1f);
+            }
             
-            yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
+            //yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
         }
 
         MatchResultsScreen.Instance.Show();
+        onGameFinished.Invoke();
+
     }
 
     private void MinigameComplete(eMinigameEvent minigameEvent)

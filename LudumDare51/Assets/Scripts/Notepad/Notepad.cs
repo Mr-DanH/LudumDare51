@@ -21,8 +21,9 @@ public class Notepad : MonoBehaviour
     private void Start()
     {
         AlienManager.Instance.onGeneratedAliens += ResetBios;
+        Game.Instance.onGameFinished += HideNotepad;
         _isOpen = false;
-        _openAnimator.SetBool("IsOpen", false);
+        _openAnimator.SetTrigger("Hide");
     }
 
     public void UiToggleOpen()
@@ -41,6 +42,11 @@ public class Notepad : MonoBehaviour
         }
     }
 
+    private void HideNotepad()
+    {
+        _openAnimator.SetTrigger("Hide");
+    }
+
     private void ResetBios()
     {
         CleanupTabs();
@@ -49,6 +55,7 @@ public class Notepad : MonoBehaviour
         aliens.ForEach(GenerateBio);
         _tabs[0].Select();
         UiSelectBio(0, selected: true);
+        _openAnimator.SetTrigger("Appear");
     }
 
     private void CleanupTabs()
