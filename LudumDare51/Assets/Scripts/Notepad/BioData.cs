@@ -5,7 +5,7 @@ using UnityEngine;
 public class BioData
 {
     private static string COMMA = ", ";
-    private static string LINE = "\n--------------------";
+    private static string LINE = "\n-----------";
 
     public string Name { get; private set; }
     public string BodyType { get; private set; }
