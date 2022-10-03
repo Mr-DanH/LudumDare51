@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
@@ -13,6 +14,8 @@ public class Game : SingletonMonoBehaviour<Game>
     public List<Minigame> m_minigames = new List<Minigame>();
 
     public Transform m_timerSegmentParent;
+
+    public Image m_drinkImage;
 
     const float ALIEN_ARRIVE_DELAY = 1;
     const int ALIEN_TIME = 10;
@@ -79,13 +82,13 @@ public class Game : SingletonMonoBehaviour<Game>
 
             Debug.Log($"Alien {i} leave");
 
+            _alienObject.Exit(m_drinkImage.gameObject.activeInHierarchy ? m_drinkImage.sprite : null);
+
             foreach(var minigame in m_minigames)
             {
                 minigame.AlienLeave();
                 minigame.onMinigameComplete -= MinigameComplete;
-            }
-            
-            _alienObject.Exit();
+            }            
 
             while(_alienObject.IsMoving)
                 yield return null;

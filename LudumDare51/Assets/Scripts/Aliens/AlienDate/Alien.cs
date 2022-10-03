@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Alien : MonoBehaviour
 {
+    public Image m_drinkImage;
+
     [SerializeField] Material _alienMaterial;
     private AlienTorso _body;
     private AlienHead _head;
@@ -28,6 +31,11 @@ public class Alien : MonoBehaviour
     void Awake()
     {
         m_startPos = transform.localPosition;
+    }
+
+    void Start()
+    {
+        m_drinkImage.gameObject.SetActive(false);
     }
 
     public void Setup(OngoingAlienData ongoingData)
@@ -61,6 +69,8 @@ public class Alien : MonoBehaviour
         
         transform.localScale = Vector3.one;
         transform.rotation = Quaternion.identity;
+        
+        m_drinkImage.transform.SetSiblingIndex(2);
     }
 
     public void TriggerEmotionalResponse(eEventEmotion emotion)
@@ -73,6 +83,7 @@ public class Alien : MonoBehaviour
 
     public void Enter()
     {
+        m_drinkImage.gameObject.SetActive(false);
         //m_moveType = eMoveType.ShortArse;
 
         if(m_moveType == eMoveType.Drop)
@@ -81,8 +92,14 @@ public class Alien : MonoBehaviour
             StartCoroutine(Move(m_startPos - (Vector3.right * DISTANCE_OFFSCREEN), m_startPos));
     }
 
-    public void Exit()
+    public void Exit(Sprite drinkSprite)
     {
+        if(drinkSprite != null)
+        {
+            m_drinkImage.gameObject.SetActive(true);
+            m_drinkImage.sprite = drinkSprite;
+        }
+
         if(m_moveType == eMoveType.Drop)
             StartCoroutine(Move(m_startPos, m_startPos + (Vector3.up * HEIGHT_OFFSCREEN)));
         else

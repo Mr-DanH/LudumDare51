@@ -14,6 +14,13 @@ public class DrinkMinigame : Minigame
         base.ResetMinigame();
     }
 
+    public override void AlienLeave()
+    {
+        base.AlienLeave();
+        m_actualDrink.gameObject.SetActive(false);
+    }
+
+
     void Update()
     {
 
