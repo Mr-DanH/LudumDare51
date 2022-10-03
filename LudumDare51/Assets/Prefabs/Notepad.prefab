@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -119.9}
+  m_AnchoredPosition: {x: 0, y: -8.9}
   m_SizeDelta: {x: -40, y: 121.6}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1110139143052870686
@@ -71,8 +71,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -344.7}
-  m_SizeDelta: {x: 0, y: -344.7}
+  m_AnchoredPosition: {x: -0, y: -180.83}
+  m_SizeDelta: {x: 0, y: -180.83}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1495487629525409923
 GameObject:
@@ -422,7 +422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.5, y: 57}
+  m_AnchoredPosition: {x: 1.5, y: -0}
   m_SizeDelta: {x: -3, y: 56}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2481133979918977899
@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2001722455253587175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -846,8 +846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -78.6}
-  m_SizeDelta: {x: 0, y: 274.5}
+  m_AnchoredPosition: {x: -0.00015258789, y: -69.29999}
+  m_SizeDelta: {x: 0, y: 111.529}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &7234541678500867902
 GameObject:
@@ -883,7 +883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00010681152, y: 0.000061035156}
   m_SizeDelta: {x: 0, y: 69.3}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7447278198935399258
@@ -1006,7 +1006,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Likes
+  m_Text: LIKES
 --- !u!1 &7889201696675450932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1166,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dislikes
+  m_Text: DISLIKES
 --- !u!1 &8738437093573934522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,8 +1201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25, y: -34.2}
-  m_SizeDelta: {x: -50, y: 76}
+  m_AnchoredPosition: {x: 25, y: -33.6}
+  m_SizeDelta: {x: -50, y: 54}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8368255373576675135
 CanvasRenderer:
@@ -1234,20 +1234,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1a3b0a81842a7044882e821f1e27f85c, type: 3}
-    m_FontSize: 14
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 50
+    m_MinSize: 4
+    m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'nature, spotty,
-
-    cool'
+  m_Text: nature, spotty, cool
 --- !u!1 &8871703502115729615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,8 +1285,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -29.999975}
-  m_SizeDelta: {x: 0, y: 60.00005}
+  m_AnchoredPosition: {x: 0, y: -28}
+  m_SizeDelta: {x: 0, y: -56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7087408359896791254
 MonoBehaviour:
