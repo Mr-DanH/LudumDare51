@@ -16,7 +16,8 @@ public class Alien : MonoBehaviour
     {
         Bob,
         Wobble,
-        Drop
+        Drop,
+        ShortArse
     }
     eMoveType m_moveType;
 
@@ -66,7 +67,7 @@ public class Alien : MonoBehaviour
 
     public void Enter()
     {
-        //m_moveType = eMoveType.Drop;
+        //m_moveType = eMoveType.ShortArse;
 
         if(m_moveType == eMoveType.Drop)
             StartCoroutine(Move(m_startPos + (Vector3.up * HEIGHT_OFFSCREEN), m_startPos));
@@ -89,7 +90,10 @@ public class Alien : MonoBehaviour
         float t = 0;
         while(t < 1)
         {
-            t += Time.deltaTime;
+            if(m_moveType == eMoveType.ShortArse)
+                t += Time.deltaTime * 0.5f;
+            else
+                t += Time.deltaTime;
             Vector3 pos = Vector3.Lerp(from, to, t);
             Quaternion rot = transform.rotation;
         
@@ -113,6 +117,29 @@ public class Alien : MonoBehaviour
                         pos = Vector3.Lerp(from, to, cappedT);
                         float curve = (Mathf.Sin(t * Mathf.PI * 3f) + 1) * 0.5f;
                         transform.localScale = new Vector3(Mathf.Lerp(0.7f, 1.3f, curve), Mathf.Lerp(1.2f, 0.8f, curve), 1);
+                    }
+                    break;
+                    
+                case eMoveType.ShortArse:
+                    {
+                        float invT = t;
+                        Vector3 invFrom = from;
+                        Vector3 invTo = to;
+                        if(from == m_startPos)
+                        {
+                            invT = 1 - t;
+                            invFrom = to;
+                            invTo = from;
+                        }
+
+                        float cappedT = Mathf.InverseLerp(0.0f, 0.8f, invT);
+                        pos = Vector3.Lerp(invFrom, invTo, cappedT);
+                        
+                        float curve = Mathf.Abs(Mathf.Sin(cappedT * Mathf.PI * 6));
+                        pos.y = pos.y + curve * 0.03f * (to.x - from.x);
+
+                        float heightT = Mathf.InverseLerp(0.8f, 1, invT);
+                        pos += Vector3.down * 200 * Mathf.Cos(heightT * 1.5f * Mathf.PI) * (1 - heightT);
                     }
                     break;
             }
