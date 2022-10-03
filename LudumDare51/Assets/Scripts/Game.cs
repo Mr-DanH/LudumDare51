@@ -98,7 +98,7 @@ public class Game : SingletonMonoBehaviour<Game>
             yield return new WaitForSeconds(ALIEN_LEAVE_DELAY);
         }
 
-        ChooseMatchesScreen.Instance.Show();
+        MatchResultsScreen.Instance.Show();
     }
 
     private void MinigameComplete(eMinigameEvent minigameEvent)
