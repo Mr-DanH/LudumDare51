@@ -9,8 +9,14 @@ public class AlienHead : AlienBodyPart
     [SerializeField] List<Image> _accessories;
     [SerializeField] Image _mouth;
     [SerializeField] Text _nameTag;
-    [SerializeField] Image _happy;
-    [SerializeField] Image _sad;
+    [SerializeField] CanvasGroup _happy;
+    [SerializeField] CanvasGroup _sad;
+
+    [SerializeField] AnimationCurve _emotionCurve;
+    [SerializeField] float _emotionDuration;
+
+    private float _transparent = 0;
+    private float _opaque = 1;
 
     public void Setup(string name, AlienVisuals data)
     {
@@ -25,33 +31,24 @@ public class AlienHead : AlienBodyPart
         _mouth.sprite = data.Mouths.Mouth;
 
         _nameTag.text = name;
+        
+        _happy.alpha = _transparent;
+        _sad.alpha = _transparent;
     }
 
     public IEnumerator ShowEmotion(eEventEmotion emotion)
     {
-        Image emotionImage = emotion == eEventEmotion.Happy ? _happy : _sad;
-        Color startColour = emotionImage.color;
-        startColour.a = 0;
-        Color endColour = emotionImage.color;
-        endColour.a = 1;
+        CanvasGroup emotionImage = emotion == eEventEmotion.Happy ? _happy : _sad;
 
         float t = 0;
-        while(t < 1)
+        while(t < _emotionDuration)
         {
             t += Time.deltaTime;
-            Color fade = Color.Lerp(startColour, endColour, t);
-            emotionImage.color = fade;
+            float fade = Mathf.Lerp(_transparent, _opaque, _emotionCurve.Evaluate(t/_emotionDuration));
+            emotionImage.alpha = fade;
             yield return null;
         }
 
-        t = 0;
-        while(t < 1)
-        {
-            t += Time.deltaTime;
-            Color fade = Color.Lerp(endColour, startColour, t);
-            emotionImage.color = fade;
-            yield return null;
-        }
         yield return null;
     }
 }

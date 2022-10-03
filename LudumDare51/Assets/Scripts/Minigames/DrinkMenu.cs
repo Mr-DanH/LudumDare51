@@ -90,7 +90,7 @@ public class DrinkMenu : MinigameProp, IPointerDownHandler, IPointerUpHandler, I
     {
         base.Update();
 
-        m_lerpTime += Time.deltaTime * 2;
+        m_lerpTime += Time.deltaTime * 4;
         transform.localScale = Vector3.Lerp(m_fromSize, m_targetSize, m_lerpTime);
         transform.localPosition = Vector3.Lerp(m_fromPosition, m_targetPosition, m_lerpTime);
         transform.localRotation = Quaternion.Lerp(m_fromRotation, m_targetRotation, m_lerpTime);
