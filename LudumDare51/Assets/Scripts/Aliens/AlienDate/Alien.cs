@@ -97,6 +97,7 @@ public class Alien : MonoBehaviour
         if(drinkSprite != null)
         {
             m_drinkImage.gameObject.SetActive(true);
+            m_drinkImage.transform.position = _body.GetLeftMostHand();
             m_drinkImage.sprite = drinkSprite;
         }
 

@@ -16,4 +16,22 @@ public class AlienTorso : AlienBodyPart
         Sprite arm = data.Arms.Element;
         SetPositionalImages(positionIndices, _arms, arm);
     }
+
+    public Vector3 GetLeftMostHand()
+    {
+        Vector3 bestHand = Vector3.right * 1000;
+
+        foreach(var arm in _arms)
+        {
+            if (!arm.gameObject.activeInHierarchy)
+                continue;
+
+            Vector3 hand = arm.transform.position + (arm.transform.up * 80);
+
+            if(hand.x < bestHand.x)
+                bestHand = hand;
+        }
+
+        return bestHand;
+    }
 }
