@@ -20,6 +20,7 @@ public class Alien : MonoBehaviour
         ShortArse
     }
     eMoveType m_moveType;
+    static int g_lastMoveType;
 
     const float DISTANCE_OFFSCREEN = 900;
     const float HEIGHT_OFFSCREEN = 800;
@@ -51,7 +52,12 @@ public class Alien : MonoBehaviour
         _head = Instantiate<AlienHead>(visualData.Head.Head, _body.HeadTransform);
         _head.Setup(ongoingData.Data.Name, visualData);
 
-        m_moveType = (eMoveType)Random.Range(0, System.Enum.GetValues(typeof(eMoveType)).Length);
+        int moveTypeIndex = Random.Range(0, System.Enum.GetValues(typeof(eMoveType)).Length - 1);
+        if(moveTypeIndex >= g_lastMoveType)
+            ++moveTypeIndex;
+        g_lastMoveType = moveTypeIndex;
+
+        m_moveType = (eMoveType)moveTypeIndex;
         
         transform.localScale = Vector3.one;
         transform.rotation = Quaternion.identity;
