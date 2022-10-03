@@ -5,6 +5,7 @@ using UnityEngine;
 public class BioData
 {
     private static string COMMA = ", ";
+    private static string LINE = "\n--------------------";
 
     public string Name { get; private set; }
     public string BodyType { get; private set; }
@@ -41,10 +42,12 @@ public class BioData
             if (trait.Polarity == AlienTraits.eTraitPolarity.LIKE)
             {
                 Likes += $"\n {trait.Description}";
+                Likes += LINE;
             }
             else
             {
                 Dislikes += $"\n {trait.Description}";
+                Dislikes += LINE;
             }
         }
     }
