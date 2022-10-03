@@ -15,11 +15,13 @@ public class Alien : MonoBehaviour
     public enum eMoveType
     {
         Bob,
-        Wobble
+        Wobble,
+        Drop
     }
     eMoveType m_moveType;
 
     const float DISTANCE_OFFSCREEN = 900;
+    const float HEIGHT_OFFSCREEN = 800;
 
     void Awake()
     {
@@ -64,12 +66,20 @@ public class Alien : MonoBehaviour
 
     public void Enter()
     {
-        StartCoroutine(Move(m_startPos - (Vector3.right * DISTANCE_OFFSCREEN), m_startPos));
+        //m_moveType = eMoveType.Drop;
+
+        if(m_moveType == eMoveType.Drop)
+            StartCoroutine(Move(m_startPos + (Vector3.up * HEIGHT_OFFSCREEN), m_startPos));
+        else
+            StartCoroutine(Move(m_startPos - (Vector3.right * DISTANCE_OFFSCREEN), m_startPos));
     }
 
     public void Exit()
     {
-        StartCoroutine(Move(m_startPos, m_startPos + (Vector3.right * DISTANCE_OFFSCREEN)));
+        if(m_moveType == eMoveType.Drop)
+            StartCoroutine(Move(m_startPos, m_startPos + (Vector3.up * HEIGHT_OFFSCREEN)));
+        else
+            StartCoroutine(Move(m_startPos, m_startPos + (Vector3.right * DISTANCE_OFFSCREEN)));
     }
 
     IEnumerator Move(Vector3 from, Vector3 to)
@@ -96,6 +106,15 @@ public class Alien : MonoBehaviour
                 case eMoveType.Wobble:
                     rot = Quaternion.Euler(0, 0, Mathf.Sin(t * Mathf.PI * 4) * 20);
                     break;
+
+                case eMoveType.Drop:
+                    {
+                        float cappedT = Mathf.InverseLerp(0.3f, 0.7f, t);
+                        pos = Vector3.Lerp(from, to, cappedT);
+                        float curve = (Mathf.Sin(t * Mathf.PI * 3f) + 1) * 0.5f;
+                        transform.localScale = new Vector3(Mathf.Lerp(0.7f, 1.3f, curve), Mathf.Lerp(1.2f, 0.8f, curve), 1);
+                    }
+                    break;
             }
 
             transform.localPosition = pos;
@@ -117,7 +136,20 @@ public class Alien : MonoBehaviour
                 {
                     t += Time.deltaTime;
                     float curve = Mathf.Abs(Mathf.Sin(t * Mathf.PI * 2));
-                    transform.localScale = Vector3.Lerp(new Vector3(Mathf.Lerp(1.3f, 1f, curve), Mathf.Lerp(0.8f, 1.2f, curve), 1), Vector3.one, t);
+                    Vector3 scale = new Vector3(Mathf.Lerp(1.3f, 1f, curve), Mathf.Lerp(0.8f, 1.2f, curve), 1);
+                    transform.localScale = Vector3.Lerp(scale, Vector3.one, t);
+                    yield return null;
+                }
+                transform.localScale = Vector3.one;
+                break;
+
+            case eMoveType.Drop:
+                while(t < 1f)
+                {
+                    t += Time.deltaTime;                    
+                    float curve = (Mathf.Sin((t * Mathf.PI * 3f) + Mathf.PI) + 1) * 0.5f;
+                    Vector3 scale = new Vector3(Mathf.Lerp(0.7f, 1.3f, curve), Mathf.Lerp(1.2f, 0.8f, curve), 1);
+                    transform.localScale = Vector3.Lerp(scale, Vector3.one, t);
                     yield return null;
                 }
                 transform.localScale = Vector3.one;
